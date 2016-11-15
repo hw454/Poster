@@ -237,6 +237,31 @@ More and more users are requiring high volumes of data. This causes a need for h
 The high frequency causes a problem with indoor-indoor propagation.
 \end{alertblock}
 
+\begin{block}{High Frequency}
+\vspace{-2cm}
+\begin{columns}
+\begin{column}{0.45\linewidth}
+\includegraphics[scale=0.7]{multipath.jpg} \cite{Multipath} 
+\end{column}
+\begin{column}{0.55\linewidth}
+\vspace{-1cm}
+\begin{itemize}
+\item
+Since the waves we are looking at are at a high frequency we can model them using ray-tracing
+\item This is very costly to run and requires lots of input information.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{block}
+
+\begin{alertblock}{LTE-femtocell}
+LTE(Long Term Evolution) femtocells are low-powered base stations for the home designed to allow high speed data transfer
+\cite{LTEfemtocells, zyren2007overview}.
+\centering
+\center
+\includegraphics[scale=0.5]{femtocell.jpg} \cite{femtocells} 
+\end{alertblock}
+
 %---------------------------------------------------------------------------
 %		What is the setting for the Project
 %----------------------------------------------------------------
@@ -270,13 +295,11 @@ The high frequency causes a problem with indoor-indoor propagation.
 %----------------------------------------------------------------------------------------
 %	Brief
 %-------%---------------------------------------------------------------
-\begin{alertblock}{High Frequency}
-Since the waves we are looking at are at a high frequency we can model them with rays.
-\end{alertblock}
 
-\begin{block}{Signal loss}
+
+\begin{block}{Collisions}
 \vspace{-1.5cm}
-When a wave collides with an object the collision causes a loss in signal power. The types of collision are Reflection, Refraction, Diffraction, and Scattering.
+When a wave collides with an object the collision causes a loss in signal power. 
 \vspace{0.5cm}
 \begin{columns}
 \begin{column}{0.03\linewidth}
@@ -285,16 +308,16 @@ When a wave collides with an object the collision causes a loss in signal power.
 \textbf{Reflection} \\
 \includegraphics[scale=1.3]{Reflection.jpg} 
 \cite{Reflection} \\
-When a ray collides with an object at some angle of incidence $i$ it is then reflected at an angle of reflection $r$. This depends of the reflection coefficient of the object.
+After colliding with an object at some angle of incidence $i$ a ray is then reflected at an angle of reflection $r$.
 \end{column}
 \begin{column}{0.02\linewidth}
 \end{column}
 \begin{column}{0.46\linewidth}
 \textbf{Refraction} \\
-\includegraphics[scale=0.8]{Refraction.png} 
+\includegraphics[scale=0.7]{Refraction.png} 
 \cite{Refraction} 
 \\ 
-When a ray travels through an object it is refracted slightly. This means that the ray bends slightly towards the normal, this depends on the density of the object.
+When a ray travels through an object it is refracted slightly towards the normal.
 \end{column}
 \begin{column}{0.03\linewidth}
 \end{column}
@@ -305,61 +328,27 @@ When a ray travels through an object it is refracted slightly. This means that t
   linewidth=20pt,
   topline=true,
   rightline=true,
-  leftline=true, bottomline=true, userdefinedwidth=0.999999\linewidth]
+  leftline=true, bottomline=true, userdefinedwidth=0.999999999999999\linewidth]
 \begin{columns}
-\begin{column}{0.05\linewidth}
+\begin{column}{0.03\linewidth}
 \end{column}
-\begin{column}{0.4\linewidth}
+\begin{column}{0.46\linewidth}
 \textbf{Scattering} \\
 \includegraphics[scale=0.5]{Scattering.jpg} 
-\\ When a surface is rough this can cause scattering as the ray collides with the object. This can be an unpredictable interaction and can be costly to simulate.
+\\ When colliding with a rough surface a ray can scatter. This can be an unpredictable and can be costly to simulate. \cite{Antennas2007}
 \end{column}
-\begin{column}{0.01\linewidth}
+\begin{column}{0.02\linewidth}
 \end{column}
-\begin{column}{0.4\linewidth}
+\begin{column}{0.46\linewidth}
 \textbf{Diffraction} \\
-\includegraphics[scale=0.5]{Diffraction.jpg} 
+\includegraphics[scale=0.7]{Diffraction.jpg}
+\\ 
+When a ray collides with the corner of an object this causes diffraction which is also difficult to predict.
 \end{column}
-\begin{column}{0.05\linewidth}
+\begin{column}{0.03\linewidth}
 \end{column}
 \end{columns}
 \end{mdframed}
-
-\begin{block}{Current Methods}
-\begin{columns}
-\begin{column}{0.5\linewidth}
-\includegraphics[scale=1]{multipath.jpg} \cite{Multipath} 
-\end{column}
-\begin{column}{0.5\linewidth}
-The most widely method used for modelling wifi propagation is currently ray-tracing. 
-\\ This method is very costly to run and requires lots of input information about the specific environment.
-\end{column}
-\end{columns}
-\end{block}
-
-
-
-%----------------------------------------------------------------------------------------
-\begin{alertblock}{What is LTE?}
-
-\end{alertblock}
-%----------------------------------------------------------------------------------------
-%	
-%----------------------------------------------------------------------------------------
-
-\begin{block}{System of Partial Differential Equations}
-
-\end{block}
-%----------------------------------------------------------------------------------------
-%----------------------------------------------------------------------------------------
-%	
-%----------------------------------------------------------------------------------------
-
-\begin{alertblock}{Experiments}
-
-\end{alertblock}
-%----------------------------------------------------------------------------------------
-%----------------------------------------------------------------------------------------
 
 
 \end{column} % End of the second column
@@ -367,7 +356,42 @@ The most widely method used for modelling wifi propagation is currently ray-trac
 \begin{column}{\sepwid}\end{column} % Empty spacer column
 \begin{column}{\sepwid}\end{column} % Empty spacer column
 \begin{column}{\threecolwid} % The third column
+%---------------------------------------------------
+% The Current Methods used.
+% -----------------------------------------------------
+\begin{mdframed}[backgroundcolor=white, userdefinedwidth=0.999999\linewidth]
+    \centering
+    \center
+    \usebeamercolor{title in headline}{\color{ForestGreen}\Large{\textbf{\vspace{0.5cm} \\ The Project \vspace{0.5cm}}}\\[0.5ex]}
+  
+    \end{mdframed}
+    \vspace{1.5cm}
+
+\begin{alertblock}{Aim}
+
+\begin{itemize}
+\item Create an accurate model and reduce the time it takes to simulate indoor-to-indoor wifi propagation in a domestic environment.
+\item Use the model to optimize the location of the transmitter.
+\end{itemize}
+\end{alertblock}
+
+
+
 %----------------------------------------------------------------------------------------
+\begin{block}{Proposed Method}
+\vspace{-2cm}
+\begin{itemize}
+\item Use intelligent algorithms and adaptive mesh techniques to decrease execution time.
+\item Compare simulation results to PDE models and to measured results from BT.
+\item Develop a stochastic model for the environment.
+\item Optimize the location of the transmitter using the developed model.
+\end{itemize}
+\end{block}
+
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+
+-------------------------------------
 %	Weak Solution
 %----------------------------------------------------------------------------------------
 
@@ -376,14 +400,6 @@ The most widely method used for modelling wifi propagation is currently ray-trac
 
 
 
-%----------------------------------------------------------------------------------------
-%	ADDITIONAL INFORMATION
-%----------------------------------------------------------------------------------------
-
-
-\begin{block}{}
-
-\end{block}
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %	REFERENCES
