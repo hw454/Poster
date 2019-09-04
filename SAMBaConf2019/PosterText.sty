@@ -1,0 +1,329 @@
+%-------------------------------------------------------------------------------------------------
+%         TEXT
+%-------------------------------------------------------------------------------------------------
+%-------------- Introduction
+\newcommand{\intro}{
+\blockcolours
+\begin{block}{Overview of ray-launching methods}
+\begin{itemize}
+\item Use \textbf{rays} to model electromagentic waves. 
+%\item This approximation is good for small wavelengths.
+\item \textbf{Rays} give the direction of the waves.
+\item Calculate the \textbf{field or power} using ray lengths.
+\end{itemize}
+\end{block}
+
+}
+
+
+%-------------- First Block
+\newcommand{\compareblock}{
+\begin{block}{Comparison to other methods}
+\blockcolours
+\begin{table}[]
+\resizebox{0.9\hsize}{!}{
+\begin{tabular}{|l|l|l|l|}
+\hline
+                                                                                          & \textbf{\begin{tabular}[c]{@{}l@{}}Standard\\ ray-launching \\ methods\end{tabular}}                              & \textbf{\begin{tabular}[c]{@{}l@{}}Adapted\\ ray-launching \\ method\end{tabular}}                                                                                                        & \textbf{\begin{tabular}[c]{@{}l@{}}Wave solvers,\\  e.g FDTD, \\ FEM, BEM\end{tabular}}                        \\ \hline
+\textbf{Inputs}                                                                           & \begin{tabular}[c]{@{}l@{}}All environment \\ information\end{tabular}                                            & \begin{tabular}[c]{@{}l@{}}Just the \\ obstacle \\ locations\end{tabular}                                                                                                                 & \begin{tabular}[c]{@{}l@{}}All environment\\ information in the \\ form of \\ boundary conditions\end{tabular} \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}Finds \\ reflection \\ points\end{tabular}}            & Yes                                                                                                               & Yes                                                                                                                                                                                       & No                                                                                                             \\ \hline
+\textbf{Mesh size}                                                                        & \begin{tabular}[c]{@{}l@{}}Independent \\ of wavelength\end{tabular}                                              & \begin{tabular}[c]{@{}l@{}}Independent \\ of wavelength\end{tabular}                                                                                                                      & \begin{tabular}[c]{@{}l@{}}Proportional \\ to the \\ wavelength.\end{tabular}                                  \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}Iteration \\ using \\ rays\end{tabular}}               & \begin{tabular}[c]{@{}l@{}}Calculate the field \\ along the rays. \\ Convert to power \\ at the end.\end{tabular} & \begin{tabular}[c]{@{}l@{}}Store the \\ history of \\ the ray\end{tabular}                                                                                                                & N/A                                                                                                            \\ \hline
+\textbf{Output}                                                                           & \begin{tabular}[c]{@{}l@{}}Mesh of power \\ values \\ corresponding to \\ the environment.\end{tabular}           & \begin{tabular}[c]{@{}l@{}}Mesh of sparse \\ matrices \\ corresponding to \\ the ray histories.\end{tabular}                                                                              & \begin{tabular}[c]{@{}l@{}}Mesh of power \\ values \\ corresponding to \\ the environment.\end{tabular}        \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}Vary the \\ inputs\end{tabular}}                       & \begin{tabular}[c]{@{}l@{}}Repeat entire \\ process.\end{tabular}                                                 & \begin{tabular}[c]{@{}l@{}}Use same output, \\ sub in new values \\ on the power \\ evaluation.\end{tabular}                                                                              & \begin{tabular}[c]{@{}l@{}}Repeat entire \\ process.\end{tabular}                                              \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}Investigate \\ sensitivity \\ to objects\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Many iterations \\ of the whole \\ method.\end{tabular}                                & \begin{tabular}[c]{@{}l@{}}Apply a function \\ for the derivative \\ of the obstacle \\ coefficient with \\ respect to either \\ $\epsilon$ or $\mu$ to the \\ output grid.\end{tabular} & \begin{tabular}[c]{@{}l@{}}Many iterations \\ of the \\ whole method.\end{tabular}                             \\ \hline
+\end{tabular}
+}
+\end{table}
+
+\end{block}
+}
+
+
+
+
+%-------------- Third Block
+\newcommand{\MathematicalMotivation}{
+\begin{alertblock}{Mathematical motivation}
+\alertblockcolours
+\begin{itemize}
+\item A model for the  field is the 
+\textbf{Helmholtz equation}:
+\begin{equation}
+\nabla^2 \field(\bx)+{\underbrace{\wavenumber}_{\substack{\text{Wave} \\ \text{number}}}}^2 \field(\bx)=0. \label{eqn::Helmholtzeqn}
+\end{equation}
+\item Where $\wavenumber$ is the wave number given by 
+\[
+\resizebox{!}{\equationheight}{ $ \wavenumber =2\pi(\wavelength^{-1})=2\pi(\text{wavelength}^{-1}) %=2\pi\freq(c^{-1})=2 \pi \text{ frequency}(\text{speed of light}^{-1}).
+$ } \]
+\item Using the WKB ansatz $\field=\strengthscal(\bx)e^{i \wavenumber \phase(\bx)}$,
+\[
+\resizebox{!}{\equationheight}{ $
+k^{-2}\lapla u - \left( |\nabla S|^2-1 +i(k^{-1})\left(2(\grad S \cdot \grad)+\lapla S \right) \right)u =0
+$}
+\]
+Using the expansion $u=u_0 +k^{-1}u_1+k^{-2}u_2+...$ 
+\begin{subequations}
+\[
+\resizebox{!}{\equationheight}{ $
+ O(k^2): \ \ \  e^{i\wavenumber \phase} \biggl(  1-|\grad \phase|^2 \biggr) \strengthscal_0  =0   \nonumber
+$ }\]
+\[
+\resizebox{!}{\equationheight}{ $
+ O(\wavenumber): e^{i \wavenumber \phase}  \Biggl[ \left(1-|\grad \phase|^2 \right) \strengthscal_1  
++ i \biggl( 2i\left(\grad \phase \cdot \grad \right) \strengthscal_0 +\lapla \phase  \strengthscal_0 \biggr) \Biggr]   =0 \nonumber
+$ }\]
+\[
+\resizebox{!}{\equationheight}{ $
+ O(\wavenumber^0):  e^{i\wavenumber \phase } \Biggl[\lapla \strengthscal_0+\left(1-|\grad \phase|^2 \right) \strengthscal_2  +i\biggl(  2\left(\grad \phase \cdot \grad \right) \strengthscal_1+\lapla S \biggr)
+\Biggr]  =0.
+$ } \]
+\end{subequations}
+Since $\wavenumber \gg 1$, $\phase$ satisfies the \textbf{Eikonal Equation}:
+\begin{equation}
+{|\nabla \phase|}^2=1 \Rightarrow |\nabla \phase|=1
+\end{equation}
+\begin{defn}[wavefront]\label{defn::wavefront} 
+\vspace{-1cm}
+\textit{Wavefronts $\wavefront(\bx)$} of a solution to \eqref{eqn::Helmholtzeqn} %with the form $\field (\bx) = \strength (\bx) e^{i \wavenumber \phase (\bx) }$,
+ are the surfaces with 
+$\phase(\bx)=constant$.
+\end{defn} 
+\vspace{-1cm}
+\wavefrontdiagram
+\begin{defn}[ray]\label{defn::ray}
+\vspace{-1cm}
+\textit{Rays} parameterised by $\charray$ corresponding to a wavefront $\wavefront(\bx(\charray))$, are the curves orthogonal to $\wavefront(\bx(\charray))$. \\ i.e.% Let $\field (\bx) = \strength (\bx) e^{i \wavenumber \phase (\bx) }$ be a solution to \eqref{eqn::Helmholtzeqn}, 
+Set $\propfac (\bx)$ to be an arbitrary proportionality factor. Then $\phase(\bx)$ and $\charray$ satisfy the orthogonality condition. %\footnote{This is for the three dimensional case. In $\dimension$ dimensions $\othersumvar=1,...,\dimension$.}:,
+\begin{equation}
+\label{eqn::rayorthogcond}
+\frac{d x_\othersumvar}{d \charray}=\propfac (\bx) \frac{d \phase}{d x_\othersumvar}, \ \ \othersumvar=1,2,3. 
+\end{equation}
+\end{defn}
+\vspace{-1cm}
+The equation of the ray is a straight line when $\phase(\bx)$ satisfies the Eikonal equation. The transport equations can then be used to find $\strengthscal_0(\bx)$.
+\end{itemize}
+\end{alertblock}
+}
+
+%-------------- Second Block
+\newcommand{\application}{
+\begin{alertblock}{Why ultra-high frequency?}
+\alertblockcolours
+\frequencytable
+% \textbf{Ray-launching can be used to model wifi and high frequency electromagnetic propagation in the home.} 
+\begin{itemize}
+\item New technologies enable \textbf{ultra-high frequency electromagnetic waves}. 
+\item Old propagation models are designed for lower frequencies.
+\item This research focuses on a \textbf{domestic environment}.
+\item This model will then be used to optimise \textbf{the location of transmitters, the choice of transmitters, and the number of transmitters in the home}.
+\end{itemize}
+\end{alertblock}
+}
+%-------------- Method Block
+\newcommand{\methodblock}{
+\begin{block}{Adapted ray-launching method}
+\blockcolours
+\begin{itemize}
+\item \textbf{Storage structure}
+\begin{itemize}
+\begin{columns}
+\begin{column}{0.01\linewidth}
+\end{column}
+\begin{column}{0.59\linewidth}
+\item
+Discretise the environment into $\nx$, $\ny$, and $\nz$ pieces in the $x,y$ and $z$ directions so that the spacing in each direction is $\meshwidth$.
+\item Each term in the mesh corresponds to a $(\underbrace{\nrefs}_{\substack{\text{number of} \\ \text{reflections}}}*\underbrace{\nrays}_{\substack{\text{number of}  \\ \text{rays}}}+1)\times (\underbrace{\nob }_{\substack{\text{number of}\\ \text{obstacles}}}*\nrefs+1)$ sparse matrix.
+\end{column}
+\begin{column}{0.4\linewidth}
+\threedgrid
+\end{column}
+\end{columns}
+\begin{columns}
+\begin{column}{0.6\linewidth}
+\begin{align*}
+& \element= \\
+& \begin{array}{l l}
+\begin{array}{c c c c c}
+\scriptscriptstyle{0} & \scriptscriptstyle{\cdots} & \scriptscriptstyle{\nrefs} & \scriptscriptstyle{\cdots} & \scriptscriptstyle{\nrefs*\nrays}
+ \end{array} &
+ \\
+ \left(
+\begin{array}{c c c c c}
+ \ddots & \cdots &  & \cdots & \reflectbox{$\ddots$} 
+ \\
+\vdots & &  & & \vdots  \\
+\vdots & &  & & \vdots \\
+\reflectbox{$\ddots$} & \cdots & &  \cdots & \ddots 
+\end{array}
+ \right)
+    & 
+    \begin{array}{l}
+    \scriptscriptstyle{0} \\ \vdots \\ \scriptscriptstyle{\nob}  \\ \vdots \\ \scriptscriptstyle{\nob*\nrefs}
+  \end{array} \\
+  \end{array}
+\end{align*}
+\end{column}
+\begin{column}{0.4\linewidth}
+\item Each term in this matrix corresponds to a possible ray ($\nrays$), obstacle ($\nob$) interaction after $\nrefs$ reflections.
+\end{column}
+\end{columns}
+%\\
+%\noindent\rule{\linewidth}{0.4pt}%
+%\item  Storage requirement: $\nx \times \ny \times \nz$, sparse matrices with dimension: $(\nrefs*\nrays+1)\times (\nob *\nrefs+1)$ with complex entries. Standard method requires $\nx \times \ny \times \nz$ complex terms.
+%\noindent\rule{\linewidth}{0.4pt}%
+\end{itemize}
+ \item \textbf{Storing each ray}  
+\begin{columns}
+\begin{column}{0.6\linewidth}
+\triangleonmesh
+\end{column}
+\begin{column}{0.4\linewidth}
+\begin{itemize}
+\item Form the ray cone.
+\item Store the \textbf{ray reflection history} and the \textbf{distance} the ray travels to the centre point of the elements in the cone.
+\end{itemize}
+\end{column}
+\end{columns}
+%\textbf{Checks}
+%\begin{itemize}
+%\item
+%At each stage check if the square is the same as the previous, if so move to the next step. 
+%\par In the cone check if the step's \textbf{inside an obstacle}, if so move to the next step.
+%\end{itemize}
+\item \textbf{Storing the ray history}
+\begin{itemize}
+\item  Initialise a temporary vector $\pmb{v}$ as empty with datatype complex and length $\nob *\nrefs +1$.
+\item The obstacle number $n_{Ob}$, reflection angle $\theta_i$, reflection number $n_{Re}\geq 1$ are stored by putting $(e^{j\theta_i})$ in the row $\nob*\left(n_{Re}-1\right)+n_{ob}$ of $\pmb{v}$. 
+\item If $n_{Re}=0$ (i.e line of sight) then $1$ is put in the $1^{st}$ row but is removed before the next reflection.
+\item 
+\[\pmb{v}=  \begin{array}{ll}
+\begin{array}{l}
+    \scriptstyle{0} \\ \vdots \\ \scriptscriptstyle{\nob*(n_{Re}-1)+n_{ob}}  \\ \vdots \\ \scriptscriptstyle{\nob*\nrefs}
+  \end{array} 
+  & \left( \begin{array}{l}
+    \vdots \\ \\ e^{j\theta_i}  \\  \\ \vdots \\
+  \end{array} \right)
+  \end{array} \]
+Multiply $\pmb{v}$ by the distance the ray has traveled. Then store in column $\underbrace{\nrefs}_{\substack{\text{Maximum}\\ \text{number} \\ \text{of reflections}}}*\underbrace{n_{Ra}}_{\substack{\text{current ray} \\ \text{number}}}+n_{Re}$ in the mesh element the ray has gone through.
+%\footnotemark[2].
+%\footnotetext[2]{ray number counts from $0$ where as reflections start counting at $1$. Since the $0$ reflection can not correspond to any obstacle.}
+\end{itemize}
+\item \textbf{Output}
+\begin{itemize}
+\begin{columns}
+\begin{column}{0.7\linewidth}
+\begin{align*}
+& \element= \\
+& \begin{array}{l l}
+\begin{array}{c c c c c}
+\scriptstyle{0} & \cdots & \scriptscriptstyle{\nrefs*n_{Ra}+n_{Re}} & \cdots & \scriptscriptstyle{\nrefs*\nrays}
+ \end{array} &
+ \\
+ \left(
+\begin{array}{c c c c c c c}
+ \ddots & & & & & & \reflectbox{$\ddots$} \\
+ & & \vdots & & & & \\ 
+ \\ & \cdots & \rad e^{j\theta_i} & \cdots & & &  \\ & & \vdots & & & & \\
+ \reflectbox{$\ddots$} & & & & & & \ddots 
+\end{array}
+ \right)
+    & 
+    \begin{array}{l}
+    \scriptstyle{0} \\ \\ \vdots \\ \scriptscriptstyle{\nob*n_{Re}+n_{ob}}  \\ \\ \vdots \\ \scriptscriptstyle{\nob*\nrefs}
+  \end{array} \\
+  \end{array}
+\end{align*}  
+\end{column}
+\begin{column}{0.3\linewidth}
+\item If $n_{Re}>0$ the column $\nrefs*n_{Ra}+n_{Re}$ must be either empty or contain $n_{Re}$ terms. \item If $n_{Re}=0$ (i.e line of sight path) then then column is either empty or contains $1$ term in the first row.
+\end{column}
+\end{columns}
+\item The grid of sparse matrices is returned by the algorithm. 
+\item To get the field or power combine this output with the parameters: dielectric properties of the obstacles, the antenna pattern, and the frequency.
+\end{itemize}
+\end{itemize}
+\end{block}
+}
+
+%-------------- Results Block
+\newcommand{\trajectories}{
+\begin{alertblock}{Trajectory approximations}
+\alertblockcolours
+\begin{itemize}
+%\item
+%The method of ray-launching can be applied to the problem of \textbf{wifi propagation}.
+%\uniformpropagation
+\item Take a template room and consider the ray paths from the transmitter.
+\raysroom
+\item In Figure \eqref{fig::rayroom} ray-launching has been applied to a 2D and 3D environment. The rays show the directions the electromagnetic wavefronts travel in.
+\end{itemize}
+\end{alertblock}
+}
+
+%-------------- Fifth Block
+\newcommand{\coverageevaluation}{
+\begin{alertblock}{Wifi coverage -- Power evaluation}
+\alertblockcolours
+\vspace{-0.02\linewidth}
+\begin{itemize}
+\item Calculate the electric/magnetic field from rays using \textbf{free-space attenuation} and \textbf{loss at reflections}. 
+\item  \textbf{The Friis transmission formula} gives the field at the receiver $\field_r$ in terms of the field at the transmitter $\field_t$, in free-space. A receiver distance $\rad$ from the transmitter has field:
+\[
+\resizebox{0.6\hsize}{!}{$
+\underbrace{\field_r}_{\substack{\text{Field}\\ \text{at} \\ \text{receiver}}}=|\underbrace{\initu}_{\substack{\text{Field} \\ \text{emitted} \\ \text{at source}}}|\sqrt{\underbrace{\transgain \recgain}_{\substack{\text{Gains} \\\text{of the} \\  \text{antennas}}}}\underbrace{\left(\wavelength \rad^{-1} \right)}_{\substack{\text{Wavelength}\\ \text{divided by}\\ \text{distance}}}\frac{e^{i\wavenumber \rad}}{4\pi}.
+$}
+\]
+\item The \textbf{Fresnel reflection coefficients\cite{aragon2008antennas}} gives the field after reflection\footnotemark[1],
+\begin{equation*}
+\resizebox{0.5\hsize}{!}{$
+\underbrace{\begin{bmatrix}
+\field^{\text{ref}}_{||} \\ \field^{\text{ref}}_{\perp}
+\end{bmatrix}}_{\substack{\text{Field strength} \\ \text{after reflection}}}=\underbrace{
+\begin{bmatrix} \refcoef_{||} & 0 \\ 0 & \refcoef_{\perp}  \end{bmatrix}}_{\substack{\text{Fresnel} \\ \text{reflection} \\ \text{coefficients}}}\underbrace{\begin{bmatrix} \field^{\text{in}}_{||} \\ \field^{\text{in}}_{\perp}
+\end{bmatrix}}_{\substack{\text{Field strength} \\ \text{into reflection}}}.
+$}
+\end{equation*}
+
+$\refcoef_{||}$ \& $\refcoef_{\perp}$ depend on the \textbf{permittivity ($\epsilon$) \& permeability ($\mu$)} of the media and the angle of incidence and transmission; $\epsilon$ and $\mu$ vary with frequency.
+\item 
+\textbf{Compute the power} from the mesh\footnotemark[2]:
+%\begin{algorithm}
+%\caption{Field calculation}\label{alg::field}
+\small{
+\begin{algorithmic}[1]
+\State AnglesMesh=angle(Mesh[nonzero terms])
+\State RefMesh=Fresnel(AnglesMesh)
+\State CombineRefMesh=$\prod_{\substack{row=r, \\ nonzero}} \text{RefMesh}[r,c] $
+\State FieldMesh= $\sum_{col=c} \frac{\sqrt{\transgain _c \recgain}}{|\text{Mesh}[c]|} \text{CombineRefMesh}$
+\State FieldMesh=$|\initu|\frac{\wavelength}{4 \pi}$ FieldMesh
+\State PowerMesh=$C_{\lambda}|\text{FieldMesh}|^2$ 
+\end{algorithmic}}
+\end{itemize}
+\Heatmap
+%Figure \eqref{fig::signalcoverage} is a 2D slice of the power calculated after ray-launching.
+\begin{minipage}{\linewidth}
+\footnotetext[1]{$||$ \& $\perp$ refer to the terms parallel to the polarisation \& perpendicular to \\ the polarisation respectively.}
+\footnotetext[2]{$\field=$the electric field $C_{\lambda}=\epsilon_0 |\field|^2$, or $\field=$ the magnetic field $C_{\lambda}=\mu_0|\field|^2$}
+\end{minipage}
+\end{alertblock}
+}
+
+
+%-------------- conclusion
+\newcommand{\futurework}{
+\begin{block}{Future work}
+\blockcolours
+\begin{itemize}
+\item
+\end{itemize}
+\end{block}
+}
+
+
+\newcommand{\biblio}{\begin{alertblock}{References}
+\bibcolours
+\footnotesize{
+ \bibliography{poster.bib}}
+ % Change the ATposter.bib file to change the references. The corresponding \cite{} calls will also need to be changed.
+\end{alertblock}}

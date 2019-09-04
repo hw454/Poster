@@ -1,0 +1,1352 @@
+
+%-------------------------------------------------------------------------------------------------
+%         IMAGES
+%-------------------------------------------------------------------------------------------------
+
+\newcommand{\wavelengthfig}{
+\begin{centering}
+\begin{figure}[H]
+\resizebox{\singlefigurewidth}{!}{
+\smallwavelength
+\bigwavelength
+}
+\caption{Ray approximation for different wavelengths.}
+\end{figure}
+\end{centering}
+}
+% \newcommand{\logo}{
+\newcommand{\standardcone}{
+\begin{figure}[H]%{r}{0.4\textwidth}
+\begin{centering}
+\resizebox{\tiksdiagramwidth}{!}{
+ \begin{tikzpicture}
+    \draw[dashed] (0,0) arc (170:10:2cm and 0.4cm)coordinate[pos=0] (a);
+    \draw (0,0) arc (-170:-10:2cm and 0.4cm)coordinate (b);
+    \draw[densely dashed] ([yshift=4cm]$(a)!0.5!(b)$) -- coordinate[pos=0.95] (aa)($(a)!0.5!(b)$);
+    \draw (a) -- ([yshift=4cm]$(a)!0.5!(b)$) node[above]{source} -- (b);
+  \end{tikzpicture}
+  }
+  \caption{\label{fig::standardcone}}
+  \end{centering}
+  \end{figure}
+  }
+  
+\newcommand{\desktop}{
+\begin{figure}[H]
+\includegraphics[width=\singlefigurewidth]{PresImages/desktop}
+\caption{\tiny{Photograph by \footnotemark}}
+\end{figure}
+}
+\newcommand{\wavefrontdiagram}{
+ \begin{figure}[H] %{r}{0.4\textwidth}
+  \begin{centering}
+    \resizebox{\tiksdiagramwidth}{!}{
+    \begin{tikzpicture}
+       \draw[red] (-3.8,-1.26) arc [start angle=170, end angle = 190,
+    x radius = 4cm, y radius = 4cm];
+     \draw[red] (-2,-1.32) arc [start angle=160, end angle = 180,
+    x radius = 4.4cm, y radius = 4.4cm];
+  \draw[red] (0,-2) arc [start angle=110, end angle = 160,
+    x radius = 2cm, y radius = 2cm];
+   \draw[blue] (-4,-2.7) arc [start angle=100, end angle = 45,
+    x radius = 4cm, y radius = 4cm];
+       \draw[blue] (-4,-1.32) arc [start angle=100, end angle = 45,
+    x radius = 6cm, y radius =6cm];
+    \draw[->] (-1.7,-1.36) --(-1.55,-0.86) node at (-1.3,-0.5){$\resizebox{0.08\linewidth}{!}{$\bn$}$};
+     \draw[->] (-1.9,-2.9) --(-1.8,-2.5) node at (-1.7,-2.2){$\resizebox{0.08\linewidth}{!}{$\bn$}$};
+     \draw[dashed] (-2.25,-2.8) -- (-5.9,-3) node at (-6.8,-3){$\resizebox{0.25\linewidth}{!}{$\wavefront(\charray_0)$}$};
+ \draw[dashed] (-2.1,-1.3) -- (-5.9,-0.8) node at (-6.5,-0.8){$\resizebox{0.25\linewidth}{!}{$\wavefront(\charray)$}$};
+ \draw[dashed] (-2.25,-2.35) -- (-4.2,-2) node at (-4.6,-2){$\resizebox{0.25\linewidth}{!}{ray}$};
+\end{tikzpicture} 
+     }
+
+   %\caption{ \label{fig::wavefront}}
+   \vspace{1cm}
+  \end{centering}
+ \end{figure}
+}
+\newcommand{\phone}{
+\begin{figure}[H]
+\includegraphics[width=\singlefigurewidth]{PresImages/smartphone}
+\end{figure}
+}
+\newcommand{\IOT}{
+\begin{figure}[H]
+\includegraphics[width=\singlefigurewidth]{PresImages/IOT}
+\end{figure}
+}
+\newcommand{\kettle}{
+\begin{figure}[H]
+\includegraphics[width=\singlefigurewidth]{PresImages/Kettle}
+\end{figure}
+}
+\newcommand{\tablet}{
+\begin{figure}[H]
+\includegraphics[width=\doublefigurewidth]{PresImages/tablet}
+\end{figure}
+}
+\newcommand{\laptop}{
+\begin{figure}[H]
+\includegraphics[width=\singlefigurewidth]{PresImages/laptop}
+\end{figure}
+}
+\newcommand{\smarttv}{
+\begin{figure}[H]
+\includegraphics[width=\singlefigurewidth]{PresImages/smarttv}
+\end{figure}
+}
+\newcommand{\washingmachine}{
+\begin{figure}[H]
+\includegraphics[width=\singlefigurewidth]{PresImages/washingmachine}
+\end{figure}
+}
+\newcommand{\fridge}{
+\begin{figure}[H]
+\includegraphics[width=\singlefigurewidth]{PresImages/fridge}
+\end{figure}
+}
+\newcommand{\linepic}{
+    \begin{tikzpicture}
+    \draw (0.2,1){ } -- (7.2,1);
+    \draw (0.2,-1){ } -- (7.2,-1); 
+    \draw [line width= 0.5cm, \raycolour]{ } (0,0) -- (7.2,0);
+    \draw[ultra thick, \wavecolour] (0,0) sin (1,1) cos (2,0) sin (3,-1) cos (4,0) sin (5,1) cos (6,0) sin(7,-1);    %% the real business in this line
+    \end{tikzpicture}
+}
+
+\newcommand{\smallwavelength}{
+    \begin{tikzpicture}
+    \draw (-0.2,1){ } -- (6,1);
+    \draw (-0.2,-1){ } -- (6,-1); 
+    \draw [line width= 0.5cm, \raycolour]{ } (0,0) -- (6,0);
+    \draw[ultra thick, \wavecolour] (0,0) sin (0.25,1) cos (0.5,0) sin (0.75,-1) cos (1,0) sin (1.25,1) cos (1.5,0) sin(1.75,-1) cos(2,0) sin (2.25,1) cos (2.5,0) sin (2.75,-1) cos (3,0) sin (3.25,1) cos (3.5,0) sin(3.75,-1) cos(4,0) sin (4.25,1) cos (4.5,0) sin (4.75,-1) cos (5,0) sin (5.25,1) cos (5.5,0) sin(5.75,-1) cos(6,0);    %% the real business in this line
+    \end{tikzpicture}
+}
+\newcommand{\bigwavelength}{
+    \begin{tikzpicture}
+    \draw (0,0) -- (6,0);
+    \draw (0,1){ } -- (6,1);
+    \draw (0,-1){ } -- (6,-1); 
+    \draw [line width= 0.5cm, \raycolour]{ } (0,0) -- (6,0);
+    \draw[ultra thick, \wavecolour] (0,0) sin (1,1) cos (2,0) sin (3,-1) cos (4,0) sin (5,1) cos (6,0);    %% the real business in this line
+    \end{tikzpicture}
+}
+\newcommand{\rayeffectreflection}{
+\begin{figure}[H]
+\includegraphics[width=\linewidth]{RayEffectPictures/Reflection}
+\end{figure}
+}
+\newcommand{\rayeffectreflectiontwo}{
+\begin{figure}[H]
+\includegraphics[width=\linewidth]{RayEffectPictures/Reflection2}
+\end{figure}
+}
+\newcommand{\rayeffectroughness}{
+\begin{figure}[H]
+\includegraphics[width=\linewidth]{RayEffectPictures/Roughness}
+\end{figure}
+}
+\newcommand{\rayeffecttransmission}{
+\begin{figure}[H]
+\includegraphics[width=\linewidth]{RayEffectPictures/Refraction}
+\end{figure}
+}
+\newcommand{\rayeffectscattering}{
+\begin{figure}[H]
+\includegraphics[width=\linewidth]{RayEffectPictures/Scattering}
+\end{figure}
+}
+\newcommand{\plainroom}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[t]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/temproom6}
+%\caption{First source location \label{fig::temproomA}}
+\end{subfigure}
+\begin{subfigure}[t]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/temproom16}
+%\caption{Second source location \label{fig::temproomB}}
+\end{subfigure}
+\caption{The room layout before simulations. \label{fig::temproom}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\raysstandardroom}{
+\begin{figure}[H]
+\begin{subfigure}[t]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefRays1} 
+\end{subfigure}
+\begin{subfigure}[t]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/ConeFigures/ConeAveragedHeatmapwithPhase1Loc5Refs200n}
+\end{subfigure}
+\end{figure}
+}
+\newcommand{\computediagram}{
+\begin{figure}[H]
+\resizebox{\tiksdiagramwidth}{!}{
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,354); %set diagram left start at 0, and has height of 354
+
+%Image [id:dp11372561628132682] 
+\draw (248.5,196) node  {\includegraphics[width=356.25pt,height=223.5pt]{Figures/OnRefRays1.png}};
+%Shape: Rectangle [id:dp30342976313090286] 
+\draw  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ][line width=5.25]  (258,116) -- (287,116) -- (287,143) -- (258,143) -- cycle ;
+%Straight Lines [id:da7762300976429961] 
+\draw    (272.5,129.5) -- (361.51,50.33) ;
+\draw [shift={(363,49)}, rotate = 498.35] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+
+% Text Node
+\draw (375,34) node   {\resizebox{2.0\linewidth}{!}{$\field_{( x,y,z)} =f( \lambda ,\transgain ,\recgain ,\ \refcoef )$}};
+\end{tikzpicture}
+}
+\end{figure}
+}
+\newcommand{\raysroom}{
+\begin{figure}[H]
+\begin{subfigure}[t]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefRays1} 
+\end{subfigure}
+%\caption{\tiny{First source location \label{fig::rayroomA}}}
+\begin{subfigure}[t]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/ConeFigures/Rayreflections}
+%\caption{\tiny{Second source location \label{fig::rayroomB}}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/ConeFigures/Rayreflectionsabove}
+%\caption{\tiny{Second source location \label{fig::rayroomB}}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/ConeFigures/Rayreflectionsside}
+%\caption{\tiny{Second source location \label{fig::rayroomB}}}
+\end{subfigure}
+\caption{\label{fig::rayroom}}
+\end{figure}
+}
+%\newcommand{\Heatmap}{
+%\begin{figure}[H]
+%\includegraphics[width=\linewidth]{Figures/ConeFigures/NoObstacleConeAveragedHeatmapwithPhase1Loc5Refs50n}
+%%\caption{First source location \label{fig::signalcoverageA}}
+%\end{figure}
+%\begin{figure}[H]
+%\includegraphics[width=\linewidth]{Figures/ConeFigures/NoObstacleConeAveragedHeatmapwithPhase2Loc5Refs50n} 
+%%\caption{Second source location \label{fig::signalcoverageB}}
+%\end{figure}
+%}
+\newcommand{\Heatmap}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/ConeFigures/ConeAveragedHeatmapwithPhase1Loc5Refs200n}
+\caption{First source location \label{fig::signalcoverageA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/ConeFigures/ConeAveragedHeatmapwithPhase2Loc5Refs200n} 
+\caption{Second source location \label{fig::signalcoverageB}}
+\end{subfigure}
+\caption{The power over the environment for two source locations.\label{fig::signalcoverage}}
+\end{centering}
+\end{figure}}
+
+\newcommand{\HeatmapObstacles}{
+\begin{figure}[H]
+\includegraphics[width=\linewidth]{Figures/ConeFigures/ConeAveragedHeatmapwithPhase1Loc5Refs200n}
+%\caption{First source location \label{fig::signalcoverageA}}
+\end{figure}
+\begin{figure}[H]
+\includegraphics[width=\linewidth]{Figures/ConeFigures/ConeAveragedHeatmapwithPhase2Loc5Refs200n} 
+%\caption{Second source location \label{fig::signalcoverageB}}
+\end{figure}
+}
+\newcommand{\spectrumpic}{
+\includegraphics[width=0.9\linewidth]{PresImages/SpectrumAllocation}
+}
+\newcommand{\uniformpropagation}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{0.4\linewidth}
+\includegraphics[width=\linewidth]{Figures/UniformPropagation}
+\caption{Isotropic antenna pattern\label{fig::Unifprop}}
+\end{subfigure}
+\begin{subfigure}[b]{0.4\linewidth}
+\includegraphics[width=\linewidth]{Figures/AntennaPattern}
+\caption{Realistic antenna pattern\label{fig::Antprop}}
+\end{subfigure}
+\end{centering}
+\end{figure}
+}
+\newcommand{\histplots}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/NoRNDHistogramNoBounds1}
+%\caption{First source location\label{fig::histnoboundsA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/NoRNDHistogramNoBounds35}
+%\caption{Second source location \label{fig::histnoboundsB}}
+\end{subfigure}
+\caption{Histogram of the unbounded field strength values\label{fig::histnobounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\histplotsbounded}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/NoRNDHistogramBounds18}
+%\caption{First source location}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{RandomPhase/NoRNDHistogramBounds52}
+%\caption{Second source location}
+\end{subfigure}
+\caption{Histograms of the bounded field strength\label{fig::histbounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\cumplots}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/NoRNDRNDCumsum1}
+%\caption{First source location \label{fig::cumsumnoboundsA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/NoRNDRNDCumsum35}
+%\caption{Second source location \label{fig::cumsumnoboundsB}}
+\end{subfigure}
+\caption{ Cumulative distribution, field strength values unbounded  \label{fig::cumsumnobounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\cumplotsbounded}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/NoRNDRNDCumsumBounds18}
+%\caption{First source location}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/NoRNDRNDCumsumBounds52}
+%\caption{Second source location}
+\end{subfigure}
+\caption{Cumulative distribution, field strength values bounded \label{fig::cumsumbounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnRefHeatmap}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefHeatmap1}
+%\caption{First source location \label{fig::OnRefsignalcoverageA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefHeatmap35} 
+%\caption{Second source location \label{fig::OnRefsignalcoverageB}}
+\end{subfigure}
+\caption{Unbounded\label{fig::OnRefsignalcoverage}}
+\end{centering}
+\end{figure}}
+\newcommand{\OnRefHeatmapBounded}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefHeatmapBounds18}
+%\caption{First source location \label{fig::OnRefsignalcoverageboundeda}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefHeatmapBounds52}
+%\caption{Second source location\label{fig::OnRefsignalcoverageboundedb}} 
+\end{subfigure}
+\caption{Bounded\label{fig::OnRefsignalcoveragebounded}}
+\end{centering}
+\end{figure}}
+
+\newcommand{\OnRefHeatmapsingle}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\triplefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefHeatmap1}
+%\caption{First source location \label{fig::OnRefsignalcoverageA}}
+\caption{Unbounded\label{fig::OnRefsignalcoverage}}
+\end{subfigure}
+\begin{subfigure}[b]{\triplefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefHeatmapBounds18}
+%\caption{First source location \label{fig::OnRefsignalcoverageboundeda}}
+\caption{Bounded\label{fig::OnRefsignalcoveragebounded}}
+\end{subfigure}
+\caption{Phase change on reflection}
+\end{centering}
+\end{figure}}
+\newcommand{\OnRefhistplots}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefHistogramNoBounds1}
+%\caption{First source location\label{fig::onrefhistnoboundsA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefHistogramNoBounds35}
+%\caption{Second source location \label{fig::onrefhistnoboundsB}}
+\end{subfigure}
+\caption{Histogram of the unbounded field strength values\label{fig::OnRefhistnobounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnRefhistplotsbounded}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefHistogramBounds18}
+%\caption{First source location}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefHistogramBounds52}
+%\caption{Second source location}
+\end{subfigure}
+\caption{Histograms of the bounded field strength\label{fig::OnRefhistbounds}}
+\end{centering}
+\end{figure}
+}
+
+
+\newcommand{\OnRefcumplots}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefRNDCumsum1}
+%\caption{First source location \label{fig::onrefcumsumnoboundsA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefRNDCumsum35}
+%\caption{Second source location \label{fig::onrefcumsumnoboundsB}}
+\end{subfigure}
+\caption{ Cumulative distribution, field strength values unbounded  \label{fig::OnRefcumsumnobounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnRefcumplotsbounded}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefRNDCumsumBounds18}
+%\caption{First source location}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnRefRNDCumsumBounds52}
+%\caption{Second source location}
+\end{subfigure}
+\caption{Cumulative distribution, field strength values bounded \label{fig::OnRefcumsumbounds}}
+\end{centering}
+\end{figure}
+}
+
+\newcommand{\OnSumHeatmap}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumHeatmap1}
+%\caption{First source location \label{fig::OnSumsignalcoverageA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumHeatmap35} 
+%\caption{Second source location \label{fig::OnSumsignalcoverageB}}
+\end{subfigure}
+\caption{The field strength over the environment unbounded\label{fig::OnSumsignalcoverage}}
+\end{centering}
+\end{figure}}
+\newcommand{\OnSumHeatmapBounded}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumHeatmapBounds18}
+%\caption{First source location \label{fig::onsumsignalcoverageboundeda}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumHeatmapBounds52}
+%\caption{Second source location\label{fig::onsumsignalcoverageboundedb}} 
+\end{subfigure}
+\caption{The field strength over the environment when bounded\label{fig::OnSumsignalcoveragebounded}}
+\end{centering}
+\end{figure}}
+\newcommand{\OnSumHeatmapsingle}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumHeatmap1}
+%\caption{First source location \label{fig::OnSumsignalcoverageA}}
+\caption{Unbounded\label{fig::OnSumsignalcoverage}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumHeatmapBounds18}
+%\caption{First source location \label{fig::onsumsignalcoverageboundeda}}
+\caption{Bounded\label{fig::OnSumsignalcoveragebounded}}
+\end{subfigure}
+\end{centering}
+\caption{Phase change on summation}
+\end{figure}}
+\newcommand{\OnSumhistplots}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumHistogramNoBounds1}
+%\caption{First source location\label{fig::onsumhistnoboundsA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumHistogramNoBounds35}
+%\caption{Second source location \label{fig::onsumhistnoboundsB}}
+\end{subfigure}
+\caption{Histogram of the unbounded field strength values\label{fig::OnSumhistnobounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnSumhistplotsbounded}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumHistogramBounds18}
+%\caption{First source location}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumHistogramBounds52}
+%\caption{Second source location}
+\end{subfigure}
+\caption{Histograms of the bounded field strength\label{fig::OnSumhistbounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnSumcumplots}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumRNDCumsum1}
+%\caption{First source location \label{fig::onsumcumsumnoboundsA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumRNDCumsum35}
+%\caption{Second source location \label{fig::onsumcumsumnoboundsB}}
+\end{subfigure}
+\caption{ Cumulative distribution, field strength values unbounded  \label{fig::OnSumcumsumnobounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnSumcumplotsbounded}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumRNDCumsumBounds18}
+%\caption{First source location}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnSumRNDCumsumBounds52}
+%\caption{Second source location}
+\end{subfigure}
+\caption{Cumulative distribution, field strength values bounded \label{fig::OnSumcumsumbounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnBothHeatmap}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHeatmap1}
+%\caption{First source location \label{fig::OnBothsignalcoverageA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHeatmap35} 
+%\caption{Second source location \label{fig::OnBothsignalcoverageB}}
+\end{subfigure}
+\caption{The field strength over the environment unbounded\label{fig::OnBothsignalcoverage}}
+\end{centering}
+\end{figure}}
+\newcommand{\OnBothHeatmapBounded}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHeatmapBounds18}
+%\caption{First source location \label{fig::onbothsignalcoverageboundeda}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHeatmapBounds52}
+%\caption{Second source location\label{fig::onbothsignalcoverageboundedb}} 
+\end{subfigure}
+\caption{The field strength over the environment when bounded\label{fig::OnBothsignalcoveragebounded}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnBothHeatmapsingle}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\triplefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHeatmap1}
+%\caption{First source location \label{fig::OnBothsignalcoverageA}}
+\caption{Unbounded\label{fig::OnBothsignalcoverage}}
+\end{subfigure}
+\begin{subfigure}[b]{\triplefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHeatmapBounds18}
+%\caption{First source location \label{fig::onbothsignalcoverageboundeda}}
+\caption{Bounded\label{fig::OnBothsignalcoveragebounded}}
+\end{subfigure}
+\end{centering}
+\caption{Phase change on reflection and summation.}
+\end{figure}
+}
+\newcommand{\OnBothHeatmapsinglesecond}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHeatmap1}
+%\caption{First source location \label{fig::OnBothsignalcoverageA}}
+\caption{Unbounded\label{fig::OnBothsignalcoverage}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHeatmapBounds18}
+%\caption{First source location \label{fig::onbothsignalcoverageboundeda}}
+\caption{Bounded\label{fig::OnBothsignalcoveragebounded}}
+\end{subfigure}
+\end{centering}
+\caption{Phase change on reflection and summation.}
+\end{figure}
+}
+\newcommand{\OnBothhistplots}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHistogramNoBounds1}
+%\caption{First source location\label{fig::onbothhistnoboundsA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHistogramNoBounds35}
+%\caption{Second source location \label{fig::onbothhistnoboundsB}}
+\end{subfigure}
+\caption{Histogram of the unbounded field strength values\label{fig::OnBothhistnobounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnBothhistplotsbounded}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHistogramBounds18}
+%\caption{First source location}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHistogramBounds52}
+%\caption{Second source location}
+\end{subfigure}
+\caption{Histograms of the bounded field strength\label{fig::OnBothhistbounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnBothhistplotssingle}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHistogramNoBounds1}
+%\caption{First source location\label{fig::onbothhistnoboundsA}}
+\caption{Unbounded } %field strength values\label{fig::OnBothhistnobounds}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHistogramBounds18}
+%\caption{First source location}
+\caption{Bounded} % field strength\label{fig::OnBothhistbounds}}
+\end{subfigure}
+\end{centering}
+\caption{Histograms}
+\end{figure}
+}
+\newcommand{\OnBothhistplotssinglesecond}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\triplefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHistogramNoBounds1}
+%\caption{First source location\label{fig::onbothhistnoboundsA}}
+\caption{Unbounded } %field strength values\label{fig::OnBothhistnobounds}}
+\end{subfigure}
+\begin{subfigure}[b]{\triplefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHistogramBounds18}
+%\caption{First source location}
+\caption{Bounded} % field strength\label{fig::OnBothhistbounds}}
+\end{subfigure}
+\end{centering}
+\caption{Histograms}
+\end{figure}
+}
+\newcommand{\OnBothcumplots}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\triplefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothRNDCumsum1}
+%\caption{First source location \label{fig::onbothcumsumnoboundsA}}
+\end{subfigure}
+\begin{subfigure}[b]{\triplefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothRNDCumsum35}
+%\caption{Second source location \label{fig::onbothcumsumnoboundsB}}
+\end{subfigure}
+\caption{ Cumulative distribution, field strength values unbounded  \label{fig::OnBothcumsumnobounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnBothcumplotsbounded}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothRNDCumsumBounds18}
+%\caption{First source location}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothRNDCumsumBounds52}
+%\caption{Second source location}
+\end{subfigure}
+\caption{Cumulative distribution, field strength values bounded \label{fig::OnBothcumsumbounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnBothcumplotssingle}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\triplefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothRNDCumsum1}
+%\caption{First source location \label{fig::onbothcumsumnoboundsA}}
+\caption{Values unbounded  \label{fig::OnBothcumsumnobounds}}
+\end{subfigure}
+\begin{subfigure}[b]{\triplefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothRNDCumsumBounds18}
+%\caption{First source location}
+\caption{Values bounded \label{fig::OnBothcumsumbounds}}
+\end{subfigure}
+\end{centering}
+\caption{Cumulative distribution}
+\end{figure}
+}
+\newcommand{\ThrDHeatmap}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHeatmapLayered1}
+%\caption{First source location \label{fig::OnBothsignalcoverageALayered}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHeatmapLayered11} 
+%\caption{Second source location \label{fig::OnBothsignalcoverageBLayered}}
+\end{subfigure}
+\caption{The field strength over the environment unbounded\label{fig::OnBothsignalcoverageLayered}}
+\end{centering}
+\end{figure}}
+\newcommand{\ThrDHeatmapBounded}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHeatmapBoundsLayered6}
+%\caption{First source location \label{fig::onbothsignalcoverageboundedLayereda}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHeatmapBoundsLayered16}
+%\caption{Second source location\label{fig::onbothsignalcoverageboundedLayeredb}} 
+\end{subfigure}
+\caption{The field strength over the environment when bounded\label{fig::OnBothsignalcoverageboundedLayered}}
+\end{centering}
+\end{figure}}
+
+\newcommand{\ThrDhistplots}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHistogramNoBoundsLayered1}
+%\caption{First source location\label{fig::onbothhistnoboundsLayeredA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHistogramNoBoundsLayered11}
+%\caption{Second source location \label{fig::onbothhistnoboundsLayeredB}}
+\end{subfigure}
+\caption{Histogram of the unbounded field strength values\label{fig::OnBothhistnoboundsLayered}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\ThrDhistplotsbounded}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHistogramBoundsLayered6}
+%\caption{First source location}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothHistogramBoundsLayered16}
+%\caption{Second source location}
+\end{subfigure}
+\caption{Histograms of the bounded field strength\label{fig::OnBothhistboundsLayered}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\ThrDcumplots}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothRNDCumsumLayered1}
+%\caption{First source location \label{fig::onbothcumsumnoboundsLayeredA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothRNDCumsumLayered11}
+%\caption{Second source location \label{fig::onbothcumsumnoboundsLayeredB}}
+\end{subfigure}
+\caption{ Cumulative distribution, field strength values unbounded  \label{fig::OnBothcumsumnoboundsLayered}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\ThrDcumplotsbounded}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothRNDCumsumBoundsLayered6}
+%\caption{First source location}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/OnBothRNDCumsumBoundsLayered16}
+%\caption{Second source location}
+\end{subfigure}
+\caption{Cumulative distribution, field strength values bounded \label{fig::OnBothcumsumboundsLayered}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\ResidualUnbounded}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/ResidualNoPhasePhaseUnbounded}
+\caption{No phase change vs phase change. \label{fig::ResidualNoPhasePhaseUnbounded}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/ResidualRefSumUnbounded}
+\caption{Phase change at reflection vs phase change at summation. \label{fig::ResidualRefSumUnbounded}} 
+\end{subfigure}
+\caption{Residuals for the unbounded results.\label{fig::ResidualsUnbounded}}
+\end{centering}
+\end{figure}}
+
+\newcommand{\ResidualBounded}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/ResidualNoPhasePhasebounded}
+\caption{No phase change vs phase change. \label{fig::ResidualNoPhasePhaseBounded}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{Figures/ResidualRefSumbounded}
+\caption{Phase change at reflection vs phase change at summation.\label{fig::ResidualRefSumBounded}} 
+\end{subfigure}
+\caption{Residuals for the bounded results.\label{fig::ResidualsBounded}}
+\end{centering}
+\end{figure}}
+\newcommand{\circlediagram}{
+ \begin{figure}[H]
+ \begin{centering}
+ \resizebox{\tiksdiagramwidth}{!}{\begin{tikzpicture}
+  \coordinate (center) at (2,2);
+  \def\radius{2.5cm}
+  % a circle
+  \draw (center) circle[radius=\radius];
+  \fill (center) circle (0.1) node[below left] {$p_0$ };
+  \pgfmathrandominteger{\a}{10}{390}
+  \pgfmathrandominteger{\b}{10}{390}
+  \fill (\a*0.01,\b*0.01) circle (0.1) node[below left] {$p$};
+ \end{tikzpicture}}
+ \caption{Circular problem with source at $p_0$ \label{fig::circlediagram}}
+ \end{centering}
+ \end{figure}
+ }
+ 
+ \newcommand{\Arc}{
+ \begin{figure}[H]
+ \begin{centering}
+ \resizebox{\tiksdiagramwidth}{!}{\begin{tikzpicture}
+  \draw (0.5,2) arc (160:80:2.5);
+  \draw (0.5,2) arc (160:200:2.5);
+  \draw (0.5,2) rectangle (2,3.5);
+  \draw (2.35,1.25) arc (160:110:0.5);
+  \draw [dashed] (0.5,2) -- (2.9,1);
+  \draw [dashed] (2.025,3.45) -- (2.9,1);
+  \draw [dashed] (0.5,2) -- (2,3.5);
+  \node [ align=right] at (1.65,1.85) {$\delta$};
+  \node [ align=right] at (2.15,2.45) {$\delta$};
+  \node [align=right] at (1,3.1) {a};
+  \node [ align=right] at (1.35,2.6) {$\sqrt{2}\delta$};
+  \node [ align=right] at (2.6,1.25) {$\theta$};
+  \node [ align=right] at (1.7,1.3) {r};
+  \node [ align=right] at (2.7,2.7) {r};
+ \end{tikzpicture}}
+ \caption{Portion of circle accounted for by a ray going through a mesh square. \label{fig::arc}}
+ \end{centering}
+ \end{figure}
+ }
+ 
+ \newcommand{\Reflection}{
+ \begin{figure}[H]
+ \begin{centering}
+ \resizebox{\tiksdiagramwidth}{!}{
+    \begin{tikzpicture}
+    \draw [<-,line width= \raywidth, \raycolour]{ } (0,0) -- (4,3);
+    \draw[line width= \edgewidth, \wavecolour]{ } (-1,-3) --(1,3);    %% the real business in this line
+        \node [draw, align=right] at (-0.25,0) {b};
+    \node [draw, align=right] at (4.25,3) {a};
+    \node [draw, align=right] at (-1.25,-3) {c};
+    \node [draw, align=right] at (1.25,3) {d};
+    \end{tikzpicture}
+    }
+    \end{centering}
+    \caption{Ray hitting wall. \label{fig::inputray}}
+    \end{figure}
+}
+ \newcommand{\ReflectionSec}{
+ \begin{figure}[H]
+ \begin{centering}
+ \resizebox{\tiksdiagramwidth}{!}{
+    \begin{tikzpicture}
+    \draw [<-,line width= \raywidth, \raycolour]{ } (0,0) -- (4,3);
+    \draw[line width= \edgewidth, \wavecolour]{ } (-1,-3) --(1,3);    %% the real business in this line
+    \node [draw, align=right] at (-0.5,0) {(0,0)};
+    \node [draw, align=right] at (4.5,3) {a-b};
+    \node [draw, align=right] at (-1.5,-3) {c-b};
+    \node [draw, align=right] at (1.5,3) {d-b};
+    \end{tikzpicture}
+    }
+        \end{centering}
+    \caption{The ray intersection translated.\label{fig::inputray2}}
+    \end{figure}
+    }
+     \newcommand{\ReflectionThr}{
+ \begin{figure}[H]
+ \begin{centering}
+ \resizebox{\tiksdiagramwidth}{!}{
+    \begin{tikzpicture}
+    \draw [dashed, line width= \raywidth, \raycolour]{ } (0,0) -- (4,3);
+    \draw [line width= \raywidth, \raycolour]{ } (0,0) -- (-0.8,-0.6);
+    \draw[line width= \edgewidth, \wavecolour]{ } (-1,-3) --(1,3);    %% the real business in this line
+    \draw[line width= \edgewidth, \wavecolour]{ } (0,0) --(0.316,0.949);    %% the real business in this line
+    \node [draw, align=right] at (-0.5,0) {(0,0)};
+    \node [draw, align=right] at (4,3.25) {a-b};        
+    \node [draw, align=right] at (-1.2,-0.6) {I};
+    \node [draw, align=right] at (-1.5,-3) {c-b};
+    \node [draw, align=right] at (1.5,3) {d-b};
+    \end{tikzpicture}
+    }
+        \end{centering}
+    \caption{The image point.\label{fig::inputray3}}
+    \end{figure}
+    }
+    
+   \newcommand{\ReflectionFo}{
+ \begin{figure}[H]
+ \begin{centering}
+ \resizebox{\tiksdiagramwidth}{!}{
+    \begin{tikzpicture}
+    \draw [line width= \raywidth, \raycolour,dashed]{ } (0,0) -- (4,3);
+    \draw [line width= \raywidth, \raycolour]{ } (0,0) -- (-0.8,-0.6);
+    \draw[line width= \edgewidth, \wavecolour,dashed]{ } (-1,-3) -- (1,3); 
+    \draw[line width= \edgewidth, \wavecolour]{ } (0,0) -- (0.316227766 ,0.9486832981);   
+    \draw[line width= \edgewidth, \wavecolour]{ } (0,0) -- (0.9486832981,-0.28);    %% the real business in this line
+    \node [draw, align=right] at (-0.5,0) {(0,0)};
+    \node [draw, align=right] at (4,3.25) {a-b};        
+    \node [draw, align=right] at (-1.2,-0.6) {I};
+    \node [draw, align=right] at (-1.5,-3) {c-b};
+    \node [draw, align=right] at (1.5,3) {d-b};
+    \node [align =left] at (-0.1,0.949) {unit};
+    \node [align =right] at (1.1,-0.316) {n};
+    \end{tikzpicture}
+    }
+    \end{centering}
+    \caption{The unit edge and normal to the edge. \label{fig::inputray4}}
+    \end{figure}
+}
+   \newcommand{\ReflectionFi}{
+ \begin{figure}[H]
+ \begin{centering}
+ \resizebox{\tiksdiagramwidth}{!}{
+    \begin{tikzpicture}
+    \draw [line width= \raywidth, \raycolour,dashed]{ } (0,0) -- (4,3);
+    \draw [line width= \raywidth, \raycolour]{ } (0,0) -- (-0.8,-0.6);
+    \draw [line width= \raywidth, \raycolour]{ } (0,0) -- (0.28,-0.96);
+    \draw[line width= \edgewidth, \wavecolour,dashed]{ } (-1,-3) -- (1,3); 
+    \draw[line width= \edgewidth, \wavecolour]{ } (0,0) -- (0.316227766 ,0.9486832981);   
+    \draw[line width= \edgewidth, \wavecolour]{ } (0,0) -- (0.9486832981,-0.28); %16); %227766);    %% the real business in this line
+    \node [draw, align=right] at (-0.5,0) {(0,0)};
+     \node [draw, align=right] at (0.28,-0.96) {ref};
+    \node [draw, align=right] at (4,3.25) {a-b};        
+    \node [draw, align=right] at (-1.2,-0.6) {I};
+    \node [draw, align=right] at (-1.5,-3) {c-b};
+    \node [draw, align=right] at (1.5,3) {d-b};
+    \node [align =left] at (-0.1,0.949) {unit};
+    \node [align =right] at (1.1,-0.316) {n};
+    \end{tikzpicture}
+    }
+    \end{centering}
+    \caption{The untranslated reflection point. \label{fig::inputray5}}
+    \end{figure}
+}
+   \newcommand{\ReflectionSi}{
+ \begin{figure}[H]
+ \begin{centering}
+ \resizebox{\tiksdiagramwidth}{!}{
+    \begin{tikzpicture}
+    \draw [line width= \raywidth, \raycolour,dashed]{ } (0,0) -- (4,3);
+    \draw [line width= \raywidth, \raycolour]{ } (0,0) -- (-0.8,-0.6);
+    \draw [line width= \raywidth, \raycolour]{ } (0,0) -- (1.12,-3.84);
+    \draw[line width= \edgewidth, \wavecolour,dashed]{ } (-1,-3) -- (1,3); 
+%    \draw[line width= \edgewidth, \wavecolour]{ } (0,0) -- (0.316227766 ,0.9486832981);   
+%    \draw[line width= \edgewidth, \wavecolour]{ } (0,0) -- (0.9486832981,-0.316227766);    %% the real business in this line
+    \node [draw, align=right] at (-0.5,0) {b};
+     \node [draw, align=right] at (1.12,-3.84) {r2=ref+b};
+    \node [draw, align=right] at (4,3.25) {a};        
+    \node [draw, align=right] at (-1.2,-0.6) {I+b};
+    \node [draw, align=right] at (-1.5,-3) {c};
+    \node [draw, align=right] at (1.5,3) {d};
+    \end{tikzpicture}
+    }
+    \end{centering}
+    \caption{The translated reflection point. \label{fig::inputray6}}
+    \end{figure}
+}
+
+\newcommand{\RunTimesA}{
+
+\begin{table}[H]
+\centering
+\caption{Run Times with ray numbers changing.}
+\label{RunTimesA}
+\begin{tabular}{|l|l|l|}
+\hline
+\multirow{2}{*}{No. of rays} & \multicolumn{2}{l|}{Run Times} \\ \cline{2-3} 
+                             & Unbounded      & Bounded       \\ \hline
+100                          & 1.64036918     & 1.56968093    \\ \hline
+200                          & 2.77097106     & 2.83074093    \\ \hline
+300                          & 4.17240500     & 4.15581298    \\ \hline
+400                          & 5.54787302     & 5.68231893    \\ \hline
+500                          & 7.07938313     & 7.20005488    \\ \hline
+600                          & 8.54780102     & 9.8496580     \\ \hline
+700                          & 11.11158895    & 10.53032398   \\ \hline
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\singlefigurewidth]{Figures/RunTimesPlot}
+\caption{Run times in seconds against $n$ number of rays for mesh spacing $\delta=0.25$. \label{fig::RunTimesA}}
+\end{figure}
+}
+\newcommand{\RunTimesB}{
+\begin{table}[H]
+\centering
+\caption{Run Times with mesh spacing changing.}
+\label{RunTimesB}
+\begin{tabular}{|l|l|l|}
+\hline
+\multirow{2}{*}{Mesh Spacing} & \multicolumn{2}{l|}{Run Times} \\ \cline{2-3} 
+                             & Unbounded      & Bounded       \\ \hline
+0.2                          & 1.42381978     & 1.43490291    \\ \hline
+0.25                         & 1.64036918    & 1.56968093    \\ \hline
+0.3                         & 1.46093202     & 1.53287697    \\ \hline
+0.4                          & 1.43039203     & 1.42852712   \\ \hline
+0.5                          & 1.44583488     & 1.44306517   \\ \hline
+0.6                          & 1.38237214     & 1.47468805     \\ \hline
+0.7                         & 1.38725305    & 1.39402890   \\ \hline
+\end{tabular}
+\end{table}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\singlefigurewidth]{Figures/RunTimesPlotB}
+\caption{Run times in seconds against  mesh spacing for $100$ rays. \label{fig::RunTimesB}}
+\end{figure}
+}
+\newcommand{\standardconetwo}{
+\begin{figure}[H]%{r}{0.4\textwidth}
+\begin{centering}
+\resizebox{\tiksdiagramwidth}{!}{
+ \begin{tikzpicture}
+         \tkzDefPoint(1.75,-1){A}
+        \tkzDefPoint(1.25,1){B}
+        \tkzDefPoint(6.75,-1){D}
+        \tkzDefPoint(6.25,1){C}
+        
+    % Parallelagram 
+        \tkzDrawPolygon[thick,fill=gray!10](A,B,C,D)
+    \draw[dashed] (2,0) arc (170:10:2cm and 0.4cm)coordinate[pos=0] (a);
+    \draw (2,0) arc (-170:-10:2cm and 0.4cm)coordinate (b);
+    \draw[densely dashed] ([yshift=4cm]$(a)!0.5!(b)$) -- coordinate[pos=0.95] (aa)($(a)!0.5!(b)$);
+    \draw[blue, <-] (0,4)--(a) -- ([yshift=4cm]$(a)!0.5!(b)$)node[above]{source} -- (b)--(8,4);
+    \draw (a) -- (b);
+    \draw[<->, dashed] (2,-0.75)--(4,-0.75) node[above,midway]{$r$};
+%    \draw[blue, ->] (a) -- (0,4);
+%    \draw[blue, ->] (b) -- (8,4);
+    \draw[<->, dashed] (0,4.5)--(4,4.5) node[above,midway]{$2r$};
+  \end{tikzpicture}
+  }
+  \caption{\label{fig::standardtwo}}
+  \end{centering}
+  \end{figure}
+      }
+      \newcommand{\raycone}{
+\begin{figure}[H]
+ \begin{centering}
+
+\resizebox{\tiksdiagramwidth}{!}{
+\begin{tikzpicture}
+  \coordinate (O) at (0,0);
+  % ball background color
+  \shade[ball color = blue, opacity = 0.2] (0,0) circle [radius = 2cm];
+  % cone
+  \begin{scope}
+    \def\rx{0.71}% horizontal radius of the ellipse
+    \def\ry{0.15}% vertical radius of the ellipse
+    \def\z{0.725}% distance from center of ellipse to origin
+
+    \path [name path = ellipse]    (0,\z) ellipse ({\rx} and {\ry});
+    \path [name path = horizontal] (-\rx,\z-\ry*\ry/\z)
+                                -- (\rx,\z-\ry*\ry/\z);
+    \path [name intersections = {of = ellipse and horizontal}];
+
+  \end{scope}
+% Outline circle
+  \draw (O) circle [radius=2cm];
+  % radius
+  \draw[densely dashed] (O) to [edge label = $\rad$] (-1.33,1.33);
+  \draw[densely dashed] (O) -- (1.33,1.33);
+
+  % cut of ball surface
+  \draw[red] (-1.35,1.47) arc [start angle = 140, end angle = 40,
+    x radius = 17.6mm, y radius = 14.75mm];
+  \draw[red] (-1.29,1.52) arc [start angle=-200, end angle = 20,
+    x radius = 13.75mm, y radius = 3.15mm];
+    % Cut of ball centre
+ \draw[blue, dashed] (-2,0) arc [start angle=180, end angle = 0,
+    x radius = 2cm, y radius = 0.5cm];
+  \draw[blue] (-2,0)  arc [start angle=-180, end angle = 0,
+    x radius = 2cm, y radius = 0.5cm];
+
+  % label of cut of ball surface
+  \draw (-1.2,2.2) -- (-0.53,1.83) node at (-1.37,2.37) {$\conearea$};
+\end{tikzpicture}
+}
+  \caption{Cone being accounted for by a ray \label{fig::raycone}}
+      \end{centering}
+  \end{figure}
+  }
+\newcommand{\rayconeDiscrete}{
+\begin{figure}%{r}{0.4\textwidth}
+ \begin{centering}
+
+\resizebox{\tiksdiagramwidth}{!}{
+\begin{tikzpicture}
+  \coordinate (O) at (0,0);
+  % ball background color
+  \shade[ball color = blue, opacity = 0.2] (0,0) circle [radius = 2cm];
+  % cone
+  \begin{scope}
+    \def\rx{0.71}% horizontal radius of the ellipse
+    \def\ry{0.15}% vertical radius of the ellipse
+    \def\z{0.725}% distance from center of ellipse to origin
+
+    \path [name path = ellipse]    (0,\z) ellipse ({\rx} and {\ry});
+    \path [name path = horizontal] (-\rx,\z-\ry*\ry/\z)
+                                -- (\rx,\z-\ry*\ry/\z);
+    \path [name intersections = {of = ellipse and horizontal}];
+
+  \end{scope}
+% Outline circle
+  \draw (O) circle [radius=2cm];
+  % radius
+  \draw[densely dashed] (O) -- (-1.53,1.33);
+  \draw[densely dashed] (O) to [edge label = $\rad$] (-2,0);
+  \draw[densely dashed] (O) --(-1,0.45);
+    \draw[densely dashed] (O) -- (-0.6,1.5);
+
+  % cut of ball surface
+  \draw[red] (-2,0) arc [start angle =180, end angle = 140,
+    x radius = 2cm, y radius = 2cm];
+  \draw[red] (-1,0.5) arc [start angle =180, end angle = 139,
+    x radius = 18mm, y radius = 15.2mm];
+  \draw[red] (-1.53,1.33)arc [start angle =140, end angle = 79,
+    x radius = 1cm, y radius = 0.5cm];
+  \draw[red] (-2,0) arc [start angle =180, end angle = 120,
+    x radius = 2cm, y radius = 0.5cm];
+
+% Angle labels
+  \draw[blue] (-0.5,0) arc [start angle =180, end angle = 155,
+    x radius = 0.5cm, y radius = 0.5cm];
+    \draw (-0.4,0.1) -- (-0.5,-0.6) node at (-0.5,-0.8) {$\rayangle$};
+     \draw[blue] (-0.6,0.25) arc [start angle =180, end angle = 100, x radius = 0.25cm, y radius = 0.5cm];
+    \draw (-0.35,0.4) -- (0.5,0.5) node at (0.5,0.7) {$\rayvertangle$};
+    % Cut of ball centre
+ \draw[ dashed] (-2,0) arc [start angle=180, end angle = 0,
+    x radius = 2cm, y radius = 0.5cm];
+  \draw (-2,0)  arc [start angle=-180, end angle = 0,
+    x radius = 2cm, y radius = 0.5cm];
+
+  % label of cut of ball surface
+  \draw (-1.2,2.2) -- (-1.23,0.75) node at (-1.33,2.37) {$\conearea$};
+\end{tikzpicture}
+}
+  \caption{Cone being accounted for by a ray \label{fig::rayconeDiscrete}}
+      \end{centering}
+  \end{figure}
+  }
+  \newcommand{\edgetriangle}{
+\begin{figure}%{r}{0.4\textwidth}
+ \begin{centering}
+
+\resizebox{\tiksdiagramwidth}{!}{
+\begin{tikzpicture}
+  \coordinate (O) at (0,0);
+
+% Outline circle
+  \draw (O) circle [radius=2cm];
+  % radius
+  \draw (O) -- (-1.93,0.52);
+  \draw (O) to [edge label = $\pdist$] (-2,0);
+% Angle labels
+  \draw[blue] (-0.5,0) arc [start angle =180, end angle = 165,
+    x radius = 0.5cm, y radius = 0.5cm];
+    \draw (-0.4,0.1) -- (-0.5,-0.6) node at (-0.5,-0.8) {$\frac{1}{2}\rayangle$};
+    % Triangle draw
+ \draw[ dashed] (-2,0) to [edge label=$\edgelength$] (-2,0.55) ;
+  \draw[dashed]  (O)--(-2,0.55);
+\end{tikzpicture}
+}
+  \caption{edge representing arc \label{fig::edgetriangle}}
+      \end{centering}
+  \end{figure}
+  }
+  
+\newcommand{\threedgrid}{
+\begin{figure}[H]%{r}{0.4\textwidth}
+ \begin{centering}
+
+\resizebox{\tiksdiagramwidth}{!}{
+\begin{tikzpicture}[every node/.style={minimum size=1cm},on grid]
+\begin{scope}[every node/.append style={yslant=-0.5},yslant=-0.5]
+  \node at (2.5,2.5) {\resizebox{0.18\linewidth}{!}{$\element$}};
+  \draw (0,0) grid (4,4);
+\end{scope}
+\begin{scope}[every node/.append style={yslant=0.5},yslant=0.5]
+  \draw (4,-4) grid (8,0);
+\end{scope}
+\begin{scope}[every node/.append style={yslant=0.5,xslant=-1},yslant=0.5,xslant=-1]
+  \draw (4,0) grid (8,4);
+\end{scope}
+\end{tikzpicture}
+}
+\end{centering}
+\end{figure}
+}
+    \newcommand{\triangleonmesh}{
+\begin{figure}[H]%{r}{0.4\textwidth}
+ \begin{centering}
+
+\resizebox{\tiksdiagramwidth}{!}{
+\begin{tikzpicture}
+  \coordinate (O) at (0,0);
+
+% True cone
+  \draw[densely dashed] (-2,0) arc [start angle =180, end angle = 165,
+    x radius = 4cm, y radius = 4cm];
+   \draw[densely dashed] (-2,0) arc [start angle =180, end angle = 195,
+    x radius = 4cm, y radius = 4cm];
+  % radius
+  \draw (2,0) -- (-1.8637,1.03528);
+  \draw [blue] (2,0) to [edge label = $\resizebox{0.05\linewidth}{!}{$\totdist$}$] (-2,0);
+  
+% Angle labels
+  \draw (1.25,0) arc [start angle =180, end angle = 165,
+    x radius = 0.75cm, y radius = 0.75cm];
+  \draw (1.6,0.05) -- (2.5,0.6) node at (2.5,0.8) {$\resizebox{0.25\linewidth}{!}{$\rayangle$}$};
+  \draw (1.25,0) arc [start angle =180, end angle = 195,
+    x radius = 0.75cm, y radius = 0.75cm];
+  \draw (1.6,-0.05) -- (2.5,-0.6) node at (2.5,-0.8) {$\resizebox{0.25\linewidth}{!}{$\rayangle$}$};
+    % Numerical cone
+ \draw[blue] (-2,0) to  (-2,1.1) ;
+ \draw [blue] (2,0)--(-2,1.1);
+ \draw[blue] (-2,0) to  (-2,-1.1) ;
+ \draw [blue] (2,0)--(-2,-1.1);
+    % \draw [blue, <->]    (-2.9,0) to [edge label=$\resizebox{0.65\linewidth}{!}{$\ $}$](-2.9,1.1);
+  % Mesh grid
+  \draw [dashed] (-2  ,-2) --(-2  ,2);
+  \draw [dashed] (-1.5,-2) --(-1.5,2);
+  \draw [dashed] (-1  ,-2) --(-1  ,2);
+  \draw [dashed] (2   ,-2) --(2   ,2);
+  \draw [dashed] (1.5 ,-2) --(1.5 ,2);
+  \draw [dashed] (1   ,-2) --(1   ,2);
+  \draw [dashed] (0   ,-2) --(0   ,2);
+  \draw [dashed] (0.5 ,-2) --(0.5 ,2);
+  \draw [dashed] (-0.5,-2) --(-0.5,2);
+  \draw [dashed] (-2  ,-2) --(2   ,-2);
+  \draw [dashed] (-2,-1.5) --(2 ,-1.5);
+  \draw [dashed] (-2  ,-1) --(2   ,-1);
+  \draw [dashed] (-2,-0.5) --(2 ,-0.5);
+  \draw [dashed] (-2   ,0) --(2    ,0);
+  \draw [dashed] (-2   ,2) --(2    ,2);
+  \draw [dashed] (-2 ,1.5) --(2  ,1.5);
+  \draw [dashed] (-2   ,1) --(2    ,1);
+  \draw [dashed] (-2 ,0.5) --(2  ,0.5);
+  \draw [<->]    (-2.2,0) to [edge label=$\resizebox{0.025\linewidth}{!}{$\meshwidth$}$](-2.2,0.5);
+    \draw [<->]    (-2,2.2) to [edge label=$\resizebox{0.025\linewidth}{!}{$\meshwidth$}$](-1.5,2.2);
+
+
+\end{tikzpicture}
+}
+  \caption{Cone on mesh \label{fig::conemesh}}
+      \end{centering}
+  \end{figure}
+  }
+ 
+\newcommand{\reflectiondiagram}{
+ \begin{figure}%{r}{0.4\textwidth}
+  \begin{centering}
+  \resizebox{0.35\textwidth}{!}{
+    \resizebox{\tiksdiagramwidth}{!}{
+    
+      \begin{tikzpicture}
+        \tkzDefPoint(0.25,0.5){O}
+        \tkzDefPoint(-2,-1){A}
+        \tkzDefPoint(-1.5,3){B}
+        \tkzDefPoint(2.5,2){C}
+        \tkzDefPoint(2,-2){D}
+        \tkzDefPoint(0.1875,1){T};
+        \tkzDefPoint(0.4375,0.125){I};
+        
+    % Parallelagram 
+        \tkzDrawPolygon[thick,fill=gray!10](A,B,C,D)
+    %Parallel and perpendicular vectors    
+        \draw[densely dashed, ->] (O) to [edge label = $\ba_{\perp}$] (0.125,-0.5);
+        \draw[densely dashed, ->] (O) -- (0.375,1.5);
+        \draw[densely dashed, ->] (O) to [edge label = $\ba_{||}$] (1.75,-0.125);
+        
+      % Incoming ray
+      \draw[blue,->] (2.5,-3) to [edge label=$\text{Ray}_\text{In}$] (O);
+      % Outgoing ray
+      \draw[blue,->,align=left] (O) to [edge label=$\text{Ray}_\text{ ref}$] (-2.5,-2);
+     % Transmitted ray
+      \draw[blue,->] (O) to [edge label=$\text{Ray}_\text{trans}$] (0,2.5);
+      
+      % Angle of incidence
+       \draw[red] (I) arc [start angle=-45, end angle = -110,
+    x radius = 0.25cm, y radius = 0.25cm];
+  \draw[red] (T) arc [start angle=135, end angle = 90,
+    x radius = 0.25cm, y radius = 0.25cm];
+    
+      % label of Angle of incidence
+  \draw[red] (0.35,0.15) -- (-2.5,0) node at (-2.75,0.25) {$\theta_i$};
+    % label of angle of tranmission
+  \draw[red] (0.21,0.8) -- (1.5,2.75) node at (1.5,3) {$\theta_t$};
+      \end{tikzpicture}
+     }  
+     }
+   \caption{ Ray hitting a plane, then reflecting and transmitting.\label{fig::reflection}}
+   \vspace{1cm}
+  \end{centering}
+ \end{figure}
+}
+
+\newcommand{\newcode}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{ArrayStructure}
+\caption{Matrix for each grid point.}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{InsideArray}
+\caption{Ray history.}
+\end{subfigure}
+\end{centering}
+\end{figure}
+}
+\newcommand{\DictionarySparse}{
+\begin{figure}[H]
+\includegraphics[width=\linewidth]{PresImages/DictionarySparseClass}
+\end{figure}
+}

@@ -1,0 +1,59 @@
+\begin{thebibliography}{1}
+
+\bibitem{Reflection}
+Excel@Physics.
+\newblock {Reflection}.
+\newblock \url{http://www.excelatphysics.com/reflection-of-light.html}, 2014.
+\newblock Accessed: 2016-11-14.
+
+\bibitem{Refraction}
+James Irvine.
+\newblock {Waves Tutorial 6: Reflection, Refraction, and Optical Fibres}
+  refraction.
+\newblock
+  \url{http://www.antonine-education.co.uk/Pages/Physics_2/Waves/WAV_06/Waves_6.htm},
+  2012.
+\newblock Accessed: 2016-11-14.
+
+\bibitem{Antennas2007}
+Simon Saunders.
+\newblock {\em Antennas and Propagation for Wireless Communication Systems}.
+\newblock Manning Publications Co., Connecticut, USA, 2000.
+
+\bibitem{Multipath}
+A.~Hall.
+\newblock {TEMS iBuildNet: Ray-Tracing } multi-path.
+\newblock \url{http://www.tems.com/blog/item/74-tems-ibuildnet-ray-tracing},
+  2016.
+\newblock Accessed: 2016-11-13.
+
+\bibitem{Background}
+C.~Wutz.
+\newblock {Drahtlose Kommunikation}.
+\newblock
+  \url{http://www.iis.fraunhofer.de/de/ff/kom/tech/drahtlose-kommunikation.html},
+  2016.
+\newblock Accessed: 2016-11-14.
+
+\bibitem{femtocells}
+Don Dingee.
+\newblock {Left2MyOwnDevices}wait, i thought femtocells were the solution.
+\newblock
+  \url{http://l2myowndevices.com/index.php/2011/08/31/wait-i-thought-femtocells-were-the-solution/},
+  2011.
+\newblock Accessed: 2016-11-14.
+
+\bibitem{LTEfemtocells}
+IXIA.
+\newblock Lte-femtocells.
+\newblock
+  \url{https://support.ixiacom.com/sites/default/files/resources/quick-reference-sheet/femtocell-qrs.pdf},
+  2011.
+\newblock Accessed: 2016-11-14.
+
+\bibitem{zyren2007overview}
+Jim Zyren and Wes McCoy.
+\newblock Overview of the 3gpp long term evolution physical layer.
+\newblock {\em Freescale Semiconductor, Inc., white paper}, 2007.
+
+\end{thebibliography}

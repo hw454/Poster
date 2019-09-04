@@ -1,0 +1,181 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[final]{beamer}
+\usepackage{bigints}
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Location of the graphics files
+\usepackage{booktabs} % Top and bottom rules for table
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+\usepackage{amsfonts, amsmath, amsthm, amssymb} % For math fonts,  symbols and environments
+\usepackage{wrapfig} % Allows wrapping text around tables and figures
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+
+\theoremstyle{definition}
+
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+
+\newtheorem{defn}{Definition}[subsection]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\usepackage{mathpazo}
+\usepackage{mdframed} %Allows text boxes and text background
+\usepackage{xcolor}%extends the range of specified colours
+\usepackage{float}
+\usepackage[scale=1.24]{beamerposter} % Use the beamerposter package for laying out the poster
+
+\usetheme{confposter} % Use the confposter theme supplied with this template
+\usepackage{exscale} %allows integrals to be rescaled
+
+\setbeamercolor{block title}{fg=white,bg=Violet} % Colors of the block titles
+\setbeamercolor{block body}{fg=black,bg=Periwinkle} % Colors of the body of blocks
+
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!90} % Colors of the highlighted block titles
+\newcommand{\blockcaption}{Periwinkle}
+\newcommand{\blockitem}{Periwinkle}
+\newcommand{\alertblockcaption}{black}
+\newcommand{\alertblockitem}{black}
+\setbeamercolor{block alerted body}{fg=black,bg=dblue!25} % Colors of the body of highlighted blocks
+% Many more colors are available for use in beamerthemeconfposter.sty
+\setbeamertemplate{caption}[numbered]{}
+%-----------------------------------------------------------
+% Define the column widths and overall poster size
+% To set effective sepwid, onecolwid and twocolwid values, first choose how many columns you want and how much separation you want between columns
+% In this template, the separation width chosen is 0.024 of the paper width and a 4-column layout
+% onecolwid should therefore be (1-(# of columns+1)*sepwid)/# of columns e.g. (1-(4+1)*0.024)/4 = 0.22
+% Set twocolwid to be (2*onecolwid)+sepwid = 0.464
+% Set threecolwid to be (3*onecolwid)+2*sepwid = 0.708
+
+\newlength{\sepwid}
+\newlength{\firstcolwid}
+\newlength{\twocolwid}
+\newlength{\threecolwid}
+\newlength{\logoheight}
+\setlength{\paperwidth}{33.1in} % A0 width: 46.8in
+\setlength{\paperheight}{46.8in} % A0 height: 33.1in
+\setlength{\sepwid}{0.02\paperwidth} % Separation width (white space) between columns
+\setlength{\firstcolwid}{0.3\paperwidth} %width of first column
+\setlength{\twocolwid}{0.3\paperwidth} % Width of second column
+%\setlength{\twocolwid}{0.4\paperwidth} % Width of two columns
+\setlength{\threecolwid}{0.3\paperwidth} % Width of thired columns
+\setlength{\logoheight}{0.03\paperheight}
+%\setlength{\topmargin}{-0.5in} % Reduce the top margin size
+
+ \newcommand{\PDE}{Partial differential equation }
+ \newcommand{\pde}{partial differential equation }
+ \newcommand{\vertspace}{\vspace{0.75cm}}
+ \newcommand{\logospace}{\hspace{0.01\linewidth}}
+ 
+%-----------------------------------------------------------
+\usepackage{environ}
+\usepackage{varwidth}
+\usepackage{lipsum}
+\usepackage{graphicx}  % Required for including images
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{mathrsfs}
+\usepackage{booktabs} % Top and bottom rules for tables
+\usepackage{multicol}
+\usepackage[export]{adjustbox}
+\usepackage{eso-pic}
+\usepackage{mdframed}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION 
+%----------------------------------------------------------------------------------------
+\columnsep=20pt % This is the amount of white space between the columns in the poster
+\columnseprule=5pt
+
+%%%%%%%%%%%%%%%%%%%%%%%EDITEDIT
+% Fill in the following fields for the title section. 
+% To format the display of the title section you will need to edit the style file beamerconfposter.sty.
+\title{The Method of Geometric Optics and the Application to High-Frequency Wave Propagation.} % Poster title 
+\author{Hayley Wragg \href{mailto:h.wragg@bath.ac.uk}{H.Wragg@bath.ac.uk} } % Author(s)
+\def \photo{\includegraphics[width=\linewidth]{HWragg}}
+\def \supervisor{Prof. C. J . Budd, Dr. R. Watson}
+\def \cosupervisor{Dr. K. Briggs, Dr. M. Fitch}
+\institute{University of Bath} % Institution
+ \def \event{ \ }
+ \def \logo{  
+ \includegraphics[height=\logoheight]{50th-anniversary-logo.png} \logospace 
+ \includegraphics[height=\logoheight]{BT.jpg} \logospace
+ \includegraphics[height=\logoheight]{smithlogo-full.png} \logospace 
+ \includegraphics[height=\logoheight]{samba.png} \logospace 
+ \includegraphics[height=\logoheight]{imilogo.jpg} }
+
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%EDITEDIT 
+% To change the background image\usebackgroundtemplate{\includegraphics[width=\paperwidth, height=\paperheight]{INSERT IMAGE NAME}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{wifi7}}
+\usebackgroundtemplate{\includegraphics[height=\paperheight]{wifi7}}
+\addtobeamertemplate{block end}{}{\vertspace} % White space under blocks
+\addtobeamertemplate{block alerted end}{}{\vertspace} % White space under highlighted (alert) blocks
+\setlength{\belowcaptionskip}{0ex} % White space under figures
+\setlength{\belowdisplayshortskip}{0ex} % White space under equations
+
+\begin{frame}[t] % The whole poster is enclosed in one beamer frame
+
+\begin{columns}[t] % The whole poster consists of three major columns, the second of which is split into two columns twice - the [t] option aligns each column's content to the top
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\firstcolwid} % The first column
+
+%---------------------------------------------------------------
+% Introduce the Method
+%---------------------------------------------------------------
+
+\begin{alertblock}{The Method of Geometric Optics}
+\setbeamercolor{item}{fg=\alertblockitem}
+\captionsetup[figure]{labelfont={color=\alertblockcaption}}
+\begin{itemize}
+\item The idea of the method is to use \textbf{straight lines(rays)} to model waves. 
+\\
+\begin{centering}
+\begin{figure}
+\includegraphics[width=0.85\linewidth]{WaveRay.jpg}
+\end{figure} 
+\end{centering}
+\item \textbf{Rays} are mapped around an environment from source to visualise the path of the waves. An example is given in Figure \ref{fig::rayfield}. 
+\\
+\begin{figure}
+\begin{centering}
+\includegraphics[width=0.85\linewidth]{Rayfield.png}
+\caption{\textcolor{black}{Rays propagating from a source and reflecting within an environment. \label{fig::rayfield} }}
+\end{centering}
+\end{figure}
+\item \textbf{Field of rays} are then observed to give an overview of the results in the environment. 
+\item Calculations are then be made \textbf{along the ray} and hence \textbf{over the ray field} to determine information about the \textbf{properties wave}. 
+\item \textbf{Ray-tracing} requires the wave-length to be small relative to the dimensions of the environment.
+\end{itemize}
+\end{alertblock}
+\vertspace
+
+
+%------------------------------------------------------------------------------
+%	Explain the method
+%--------------------------------------------------------------------------------
+
+\begin{block}{Why use the Method?}
+\setbeamercolor{item}{fg=\blockitem}
+\captionsetup[figure]{labelfont={color=\blockcaption}}
+\begin{itemize}
+\item An \textbf{advantage} is that the method is \textbf{much faster} to compute than numerical partial differential equation methods for the wave equation, especially for waves with \textbf{small wave lengths}.
+\\
+\begin{centering}
+\begin{figure}[H]
+\inc

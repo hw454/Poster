@@ -1,0 +1,172 @@
+%-------------------------------------------------------------------------------------------------
+%         PACKAGES
+%-------------------------------------------------------------------------------------------------
+\usepackage{amsthm} % Theorems 
+\usepackage{amsmath}% Equations and math symbols
+\usepackage{amsfonts} % Maths fonts
+\usepackage{float}  % Allows H positioning for figures
+\usepackage{tikz}   % Allows tikz images
+\usepackage{tkz-euclide}
+\usepackage{tikz-3dplot} 
+\usetikzlibrary{positioning}
+\tdplotsetmaincoords{60}{125} % view angles
+\tdplotsetrotatedcoords{0}{0}{0}
+\usepackage{caption}% Allows caption setup
+\usepackage{environ}
+\usepackage{varwidth}
+\usepackage{mdframed}
+%\usepackage[backend=bibtex8]{biblatex}
+%\usepackage{lstlistings} % Use for including code
+%\usepackage{wrapfig} % Allows wrapping text around tables and figures
+%\usepackage{bigints} % Large integrals
+%\usepackage{booktabs} % Top and bottom rules for table
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+%\usepackage{varwidth}
+%\usepackage{lipsum}  % \lipsum will fill formatting with jumble text to illustrate formatting
+\usepackage{graphicx}  % Required for including images and resizeboxes
+%\usepackage{amsbsy}
+%\usepackage{mathrsfs}
+%\usepackage{booktabs} % Top and bottom rules for tables
+\usepackage{multicol}
+\usepackage[export]{adjustbox}
+\usepackage{subcaption}
+%\usepackage{eso-pic}
+%\usepackage{mathpazo}
+\usepackage{mathpazo}
+\usepackage{xcolor}%extends the range of specified colours
+\usepackage[scale=1.0]{beamerposter} % Use the beamerposter package for laying out the poster
+\usetheme{confposter} % Use the confposter theme supplied with this template
+\usepackage{exscale} %allows integrals to be rescaled
+%\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\usepackage{multirow}
+\usepackage{../images}
+\renewcommand*{\thefootnote}{\alph{footnote}}
+
+%-------------------------------------------------------------------------------------------------
+%         Colours	
+%-------------------------------------------------------------------------------------------------
+
+
+\setbeamercolor{block title}{fg=white,bg=Violet} % Colors of the block titles
+\setbeamercolor{block body}{fg=black,bg=Periwinkle} % Colors of the body of blocks
+
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!90} % Colors of the highlighted block titles
+\newcommand{\blockcaption}{Violet}
+\newcommand{\blockitem}{dblue!90}
+\newcommand{\alertblockcaption}{Violet}
+\newcommand{\alertblockitem}{black}
+\setbeamercolor{block alerted body}{fg=black,bg=dblue!25} % Colors of the body of highlighted blocks
+% Many more colors are available for use in beamerthemeconfposter.sty
+
+% Command to set the colours for an alert block
+\newcommand{\alertblockcolours}{
+\setbeamercolor{item}{fg=\alertblockitem}
+\captionsetup[figure]{labelfont={color=\alertblockcaption}, textfont={color=\alertblockcaption ,it}}}
+
+% Command to set the colours for an alert block
+\newcommand{\blockcolours}{
+\setbeamercolor{item}{fg=\blockitem}
+\captionsetup[figure]{labelfont={color=\blockcaption}, textfont={color=\blockcaption ,it}}}
+
+\newcommand{\bibcolours}{
+\setbeamercolor{bibliography item}{fg=\alertblockitem}
+\nocite{*} % Insert publications even if they are not cited in the poster
+\textcolor{\alertblockitem}{
+\tiny{\scalebox {.2}{\bibliographystyle{unsrt}}} }
+}
+
+%-------------------------------------------------------------------------------------------------
+%         BIBLIOGRAPHY	
+%-------------------------------------------------------------------------------------------------
+%\bibliographystyle{unsrt}
+%-------------------------------------------------------------------------------------------------
+%         COLOURS
+%-------------------------------------------------------------------------------------------------
+\newcommand{\captioncolour}{violet}
+\newcommand{\raycolour}{violet}
+\newcommand{\wavecolour}{blue}
+
+\captionsetup[figure]{labelfont={color=\captioncolour ,it, bf}, textfont={color=\captioncolour ,it}}
+
+
+
+%-------------------------------------------------------------------------------------------------
+%         LENGTHS
+%-------------------------------------------------------------------------------------------------
+%-----------------------------------------------------------
+% Define the column widths and overall poster size
+% To set effective sepwid, onecolwid and twocolwid values, first choose how many columns you want and how much separation you want between columns
+% In this template, the separation width chosen is 0.024 of the paper width and a 4-column layout
+% onecolwid should therefore be (1-(# of columns+1)*sepwid)/# of columns e.g. (1-(4+1)*0.024)/4 = 0.22
+% Set twocolwid to be (2*onecolwid)+sepwid = 0.464
+% Set threecolwid to be (3*onecolwid)+2*sepwid = 0.708
+
+\newlength{\sepwid}
+\newlength{\firstcolwid}
+\newlength{\twocolwid}
+\newlength{\threecolwid}
+\newlength{\logoheight}
+\newlength{\titlewid}
+\newcommand{\equationheight}{0.8\height}
+\newcommand{\doubleequationheight}{1.6\height}
+\setlength{\paperwidth}{33.1in} % A0 width: 46.8in
+\setlength{\paperheight}{46.8in} % A0 height: 33.1in
+\setlength{\titlewid}{0.95\paperwidth}
+\setlength{\sepwid}{0.015\paperwidth} % Separation width (white space) between columns
+\setlength{\firstcolwid}{0.29\paperwidth} %width of first column
+\setlength{\twocolwid}{0.29\paperwidth} % Width of second column
+\setlength{\threecolwid}{0.29\paperwidth} % Width of thired columns
+\setlength{\logoheight}{0.025\paperheight}
+\newcommand{\singlefigurewidth}{0.6\linewidth}
+\newcommand{\doublefigurewidth}{0.36\linewidth}
+\newcommand{\tiksdiagramwidth}{0.9\linewidth}
+ \newcommand{\vertspace}{\vspace{0.01\paperheight}}
+  \newcommand{\titlevertspace}{\vspace{0.008\paperheight}}
+ \newcommand{\logospace}{\hspace{0.01\linewidth}}
+
+\addtobeamertemplate{block end}{}{\vertspace} % White space under blocks
+\addtobeamertemplate{block alerted end}{}{\vertspace} % White space under highlighted (alert) blocks
+\setlength{\belowcaptionskip}{0ex} % White space under figures
+\setlength{\belowdisplayshortskip}{0ex} % White space under equations
+
+
+%-------------------------------------------------------------------------------------------------
+%         COMMON PHRASES
+%-------------------------------------------------------------------------------------------------
+% Header Information
+\setbeamertemplate{caption}[numbered]{}
+
+\graphicspath{{../../Pictures/}} % Location of the graphics files
+\title{An adapted ray-launching method for optimising wifi coverage.} % Poster title 
+\author{Hayley Wragg \href{mailto:h.wragg@bath.ac.uk}{H.Wragg@bath.ac.uk} } % Author(s)
+\def \photo{\includegraphics[width=\linewidth,angle=270]{AcademicPhotos/PostersPhotos/HWragg6}}
+\def \supervisor{\mbox{Prof. C. J. Budd}, \mbox{Dr. R. Watson}}
+\def \cosupervisor{\mbox{Dr. K. Briggs}, \mbox{Dr. M. Fitch}}
+\institute{University of Bath, BT} % Institution
+ \def \logo{  
+ \includegraphics[height=\logoheight]{Logos/bathuni.png} \logospace 
+ \includegraphics[height=\logoheight]{Logos/BT.jpg} \logospace
+ \includegraphics[height=\logoheight]{Logos/smithlogo-full.png} \logospace 
+ \includegraphics[height=\logoheight]{Logos/samba.png} \logospace  }
+% General test usage
+ \newcommand{\PDE}{Partial differential equation }
+ \newcommand{\pde}{partial differential equation }
+
+%-------------------------------------------------------------------------------------------------
+%         THEOREMS
+%-------------------------------------------------------------------------------------------------
+
+ \theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+
+\theoremstyle{definition}
+
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+
+\newtheorem{defn}{Definition}[subsection]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}

@@ -1,0 +1,199 @@
+%-------------------------------------------------------------------------------------------------
+%         TEXT
+%-------------------------------------------------------------------------------------------------
+%-------------- Introduction
+\newcommand{\intro}{
+\blockcolours
+\begin{block}{Overview of the method of geometric optics}
+\begin{itemize}
+\item The idea is to use \textbf{rays} to model electromagentic waves. 
+\item This approximation is good for small wavelengths.
+\begin{centering}
+\begin{figure}[H]
+\resizebox{\singlefigurewidth}{!}{
+\smallwavelength
+\bigwavelength
+}
+\caption{Ray approximation for different wavelengths.}
+\end{figure}
+\end{centering}
+\item Map the paths of \textbf{the rays} in the environment to model the path of the waves.
+\begin{figure}
+\begin{centering}
+\includegraphics[width=\singlefigurewidth]{Rayfield17.png}
+\caption{Rays propagating within an environment. \label{fig::rayfield} }
+\end{centering}
+\end{figure}
+\item Calculations are then made \textbf{along the rays} to determine information such as the field strength.
+\end{itemize}
+\end{block}
+
+}
+
+
+%-------------- First Block
+\newcommand{\firstblock}{
+\begin{alertblock}{Why use the method?}
+\blockcolours
+\begin{itemize}
+\item When the wavelength is small this method is much faster than numerical \pde methods which require a very small mesh size.
+\end{itemize}
+\end{alertblock}
+}
+
+
+
+
+%-------------- Third Block
+\newcommand{\MathematicalMotivation}{
+\begin{alertblock}{Mathematical motivation}
+\alertblockcolours
+\begin{itemize}
+\item A model for electromagnetic field strength is the 
+\textbf{Helmholtz equation}:
+\begin{equation}
+\nabla^2 \phi(x)+{\underbrace{k}_{\substack{\text{Wave} \\ \text{number}}}}^2 \phi(x)=0.
+\end{equation}
+\item Where $k$ is the wave number given by $$k=\frac{2\pi}{\lambda}=\frac{2 \pi \text{ frequency}}{\text{speed of light}}.$$
+\item Using the WKB ansatz $\phi=u(x)e^{i k S(x)}$,
+\begin{equation}
+\frac{1}{k^2}\lapla u - \left( |\nabla S|^2-1 +\frac{i}{k}\left(2(\grad S \cdot \grad)+\lapla S \right) \right)u =0
+\end{equation} 
+Using the expansion $u=u_0 + \frac{1}{k}u_1+\frac{1}{k^2}u_2+...$ 
+\begin{subequations}
+\begin{multline}
+ O(k^2): \ \ \  e^{ikS(x)} \biggl(  1-|\grad S(x)|^2 \biggr) u_0(x)  =0   \nonumber
+ \end{multline}
+ \begin{multline}
+ O(k): \ \ \ e^{ikS(x)}  \Biggl( \left(1-|\grad S(x)|^2 \right) u_1(x)  
+\\+ i \biggl( 2i\left(\grad S \cdot \grad \right) u_0(x) +\lapla S(x) u_0(x)) \Biggr)   =0 \nonumber
+\end{multline}
+\begin{multline}
+ O(k^0):  e^{ikS(x)} \Biggl(\lapla u_0(x)+\left(1-|\grad S(x)|^2 \right) u_2(x) \\ +i\biggl(  2\left(\grad S \cdot \grad \right) u_1(x)+\lapla S(x) \biggr)
+\Biggr)  =0.
+\nonumber
+\end{multline}
+\label{eqn::kordersexpan}
+\end{subequations}
+Since $k \gg 1$, $S(x)$ satisfies the \textbf{Eikonal Equation}:
+\begin{equation}
+{|\nabla S|}^2=1 \Rightarrow |\nabla S|=1
+\end{equation}
+A solution to the Eikonal equation is that the path $S(x)$ is a straight line.
+\end{itemize}
+\end{alertblock}
+}
+
+%-------------- Second Block
+\newcommand{\application}{
+\begin{alertblock}{Application}
+\alertblockcolours
+\begin{itemize}
+\item \textbf{Small wavelength wave propagation} can be used to model wifi and higher frequency electromagnetic propagation in the home. 
+\item Developments in technologies have resulted in an increased demand for \textbf{ultra-high frequency electromagnetic propagation models}. 
+\item This research focuses on developing a model for this ultra-high frequency propagation in a \textbf{domestic environment}.
+\item To get an idea of the coverage around the environment the method of ray-launching can be used.
+\end{itemize}
+\end{alertblock}
+}
+
+
+
+%-------------- Fourth Block
+\newcommand{\resultsblock}{
+\begin{block}{Trajectory approximations}
+\blockcolours
+\begin{itemize}
+\item
+The method of geometric optics can be applied to the problem of \textbf{wifi propagation}. For simplicity it is assumed that the antenna propagates uniformly and the domain is modelled in \textbf{two dimensions}.
+\uniformpropagation
+\item Take a template room and consider two different source locations.
+  \begin{figure}
+ \includegraphics[width=\doublefigurewidth]{temproom6}
+  \includegraphics[width=\doublefigurewidth]{temproom16}
+  \caption{Template room \label{fig::temproom}}
+ \end{figure}
+ \item Objects are also given the same reflection coefficient and refraction is ignored---this is valid since the loss is very high.
+\raysroom
+\item In Figure \eqref{fig::rayroom} ray-launching has been applied to Figure \eqref{fig::temproom} to visualise the trajectories of the rays approximating the travel of the electromagnetic field. Using Hewett's argument in \cite{hewett2010sound} diffraction is ignored. This has been applied to two different source locations.
+\end{itemize}
+\end{block}
+}
+
+%-------------- Fifth Block
+\newcommand{\resultssecondblock}{
+\begin{alertblock}{Wifi coverage - Ignoring phase}
+\alertblockcolours
+\begin{itemize}
+\item The strength of the field is calculated in two parts accounting for the \textbf{attenuation in free space} and the \textbf{reduction at the reflections}. 
+\item Let $u_r$, $u_t$ be the field strength at the receiver and transmitter relatively. \textbf{The Friis transmission formula} gives the loss resulting from the spread from the antenna:
+\begin{equation}
+\label{eqn::FriisTransmissFormula}
+\frac{|u_r|}{|u_t|}=\sqrt{G_a G_b} \left( \frac{\lambda}{4 \pi r} \right), \hspace{0.1\linewidth}\cite{aragon2008antennas}
+\end{equation} 
+The antenna has no preferred direction so the gains for the antenna's $G_a$ and $G_b$ are $1$. 
+
+\item Figure \ref{fig::signalcoverage} shows the signal strength for two \textbf{different transmitter locations}.
+\Heatmap
+%\item A problem with this visualisation is that \textbf{very extreme low values makes the fairly low values look better}. Practically any value below $30$ dBm is unusable. Similarly for the \textbf{extreme high values}. 
+%\item To account for this the values are \textbf{bounded} within their useful range of $[30,120]$ dBm. The resulting coverage is then found.
+%\HeatmapBounded
+\end{itemize}
+\end{alertblock}
+}
+\newcommand{\resultsthirdblock}{
+\begin{block}{Wifi coverage - With random phase}
+\alertblockcolours
+\begin{itemize}
+\item To account for the destruction from phase difference the magnitude of the field is multiplied by a random complex number with magnitude 1 at reflection.
+\OnBothHeatmap
+%\item A problem with this visualisation is that \textbf{very extreme low values makes the fairly low values look better}. Practically any value below $30$ dBm is unusable. Similarly for the \textbf{extreme high values}. 
+%\item To account for this the values are \textbf{bounded} within their useful range of $[30,120]$ dBm. The resulting coverage is then found.
+%\HeatmapBounded
+\end{itemize}
+\end{block}
+}
+
+%-------------- Fifth Block
+\newcommand{\histograms}{
+\begin{alertblock}{Distribution of the field strength}
+\alertblockcolours
+Histograms for the field strength values to visualise the quality of the coverage.
+\histplots
+\OnBothhistplots
+%\histplotsbounded
+%Figures show a significant change for the different source locations.
+\end{alertblock}
+}
+
+
+%-------------- Fifth Block
+\newcommand{\cumulativehistograms}{
+\begin{block}{Cumulative distribution of the field strength}
+\alertblockcolours
+To view the fraction of area with at least some given field strength the cumulative distributions can be used.
+\cumplots
+\OnBothcumplots
+Figures \eqref{fig::cumsumnobounds} \& \eqref{fig::OnBothcumsumnobounds} show a difference in the area of medium coverage made by moving the transmitter.  
+\end{block}
+}
+
+
+%-------------- conclusion
+\newcommand{\futurework}{
+\begin{block}{Future work}
+\blockcolours
+\begin{itemize}
+\item Analyse the distribution results for different transmitter locations and environments. 
+\item Consider the probability distribution for the phase.
+\item Take into account different reflection coefficients and consider a probability distribution for these. 
+\end{itemize}
+\end{block}
+}
+
+
+\newcommand{\biblio}{\begin{alertblock}{References}
+\bibcolours
+ \bibliography{ATposter.bib}
+ % Change the ATposter.bib file to change the references. The corresponding \cite{} calls will also need to be changed.
+\end{alertblock}}

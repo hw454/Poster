@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[final]{beamer}
+\usepackage{ATPoster}
+\usepackage{PosterText}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION 
+%----------------------------------------------------------------------------------------
+\columnsep=20pt % This is the amount of white space between the columns in the poster
+\columnseprule=5pt
+
+%%%%%%%%%%%%%%%%%%%%%%%EDITEDIT
+% Fill in the following fields for the title section. 
+% To format the display of the title section you will need to edit the style file beamerconfposter.sty.
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%EDITEDIT 
+% To change the background image\usebackgroundtemplate{\includegraphics[width=\paperwidth, height=\paperheight]{INSERT IMAGE NAME}
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{wifi}}
+\usebackgroundtemplate{\includegraphics[height=\paperheight]{wifi3}}
+
+\begin{frame}[t] % The whole poster is enclosed in one beamer frame
+
+\begin{columns}[t] % The whole poster consists of three major columns, the second of which is split into two columns twice - the [t] option aligns each column's content to the top
+
+%\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\firstcolwid} % The first column
+
+%---------------------------------------------------------------
+% Introduce the Method
+%---------------------------------------------------------------
+
+\intro
+
+%------------------------------------------------------------------------------
+%	Explain the method
+%--------------------------------------------------------------------------------
+
+\MathematicalMotivation
+\application
+%----------------------------------------------------------------------------------------
+%	Introduce The Project
+%----------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------
+
+\end{column} % End of the first column
+
+%\begin{column}{1.0\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\twocolwid} % Begin a column which is two columns wide (column 2)
+%----------------------------------------------------------------------------------------
+
+  % Coloured straight line box
+% \vspace{-2cm}
+% \hspace{0.5in}
+% \begin{beamercolorbox}[wd=14in,colsep=0.15cm]{cboxb}
+% \end{beamercolorbox}
+
+\resultsblock
+\resultssecondblock
+\end{column}
+%----------------------------------------------------------------
+%		End the first column and start the second
+%------------------------------------------------------------
+
+%\begin{column}{\sepwid}% SPACER COLUMN\end{column}
+
+\begin{column}{\threecolwid}
+
+\histograms
+\cumulativehistograms
+
+\firstblock
+
+\futurework
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%	REFERENCES
+%----------------------------------------------------------------------------------------
+\biblio
+
+%\begin{column}{\sepwid}
+%% SPACER COLUMN
+%\end{column}
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+% \begin{block}{Acknowledgements}
+
+% \end{block}
+
+%---------------------------------------------------------------
+
+\end{column} % End of the third column
+
+\end{columns} % End of all the columns in the poster
+\end{frame} % End of the enclosing frame
+
+\end{document}

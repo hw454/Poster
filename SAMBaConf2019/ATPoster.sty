@@ -1,0 +1,342 @@
+%-------------------------------------------------------------------------------------------------
+%         PACKAGES
+%-------------------------------------------------------------------------------------------------
+\usepackage{amsthm} % Theorems 
+\usepackage{amsmath}% Equations and math symbols
+\usepackage{amsfonts} % Maths fonts
+\usepackage{float}  % Allows H positioning for figures
+\usepackage{tikz}   % Allows tikz images
+\usepackage{caption}% Allows caption setup
+\usepackage{environ}
+\usepackage{varwidth}
+\usepackage{mdframed}
+%\usepackage{lstlistings} % Use for including code
+%\usepackage{wrapfig} % Allows wrapping text around tables and figures
+%\usepackage{exscale} % Allows integrals to be rescaled
+%\usepackage{bigints} % Large integrals
+%\usepackage{graphicx} % Required for including images
+%\usepackage{booktabs} % Top and bottom rules for table
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+%\usepackage{varwidth}
+%\usepackage{lipsum}  % \lipsum will fill formatting with jumble text to illustrate formatting
+%\usepackage{graphicx}  % Required for including images
+%\usepackage{amsbsy}
+%\usepackage{mathrsfs}
+%\usepackage{booktabs} % Top and bottom rules for tables
+%\usepackage{multicol}
+\usepackage[export]{adjustbox}
+%\usepackage{eso-pic}
+%\usepackage{mathpazo}
+\usepackage{mathpazo}
+\usepackage{xcolor}%extends the range of specified colours
+\usepackage[scale=1.0]{beamerposter} % Use the beamerposter package for laying out the poster
+\usetheme{confposter} % Use the confposter theme supplied with this template
+\usepackage{exscale} %allows integrals to be rescaled
+
+
+%-------------------------------------------------------------------------------------------------
+%         Colours	
+%-------------------------------------------------------------------------------------------------
+
+
+\setbeamercolor{block title}{fg=white,bg=Violet} % Colors of the block titles
+\setbeamercolor{block body}{fg=black,bg=Periwinkle} % Colors of the body of blocks
+
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!90} % Colors of the highlighted block titles
+\newcommand{\blockcaption}{Violet}
+\newcommand{\blockitem}{dblue!90}
+\newcommand{\alertblockcaption}{Violet}
+\newcommand{\alertblockitem}{black}
+\setbeamercolor{block alerted body}{fg=black,bg=dblue!25} % Colors of the body of highlighted blocks
+% Many more colors are available for use in beamerthemeconfposter.sty
+
+% Command to set the colours for an alert block
+\newcommand{\alertblockcolours}{
+\setbeamercolor{item}{fg=\alertblockitem}
+\captionsetup[figure]{labelfont={color=\alertblockcaption}, textfont={color=\alertblockcaption ,it}}}
+
+% Command to set the colours for an alert block
+\newcommand{\blockcolours}{
+\setbeamercolor{item}{fg=\blockitem}
+\captionsetup[figure]{labelfont={color=\blockcaption}, textfont={color=\blockcaption ,it}}}
+
+\newcommand{\bibcolours}{
+\setbeamercolor{bibliography item}{fg=\alertblockitem}
+\nocite{*} % Insert publications even if they are not cited in the poster
+\textcolor{\alertblockitem}{
+\tiny{\scalebox {.2}{\bibliographystyle{unsrt}}} }
+}
+
+%-------------------------------------------------------------------------------------------------
+%         BIBLIOGRAPHY	
+%-------------------------------------------------------------------------------------------------
+%\bibliographystyle{unsrt}
+%-------------------------------------------------------------------------------------------------
+%         COLOURS
+%-------------------------------------------------------------------------------------------------
+\newcommand{\captioncolour}{violet}
+\newcommand{\raycolour}{violet}
+\newcommand{\wavecolour}{blue}
+
+\captionsetup[figure]{labelfont={color=\captioncolour ,it, bf}, textfont={color=\captioncolour ,it}}
+
+
+%-------------------------------------------------------------------------------------------------
+%         LENGTHS
+%-------------------------------------------------------------------------------------------------
+%-----------------------------------------------------------
+% Define the column widths and overall poster size
+% To set effective sepwid, onecolwid and twocolwid values, first choose how many columns you want and how much separation you want between columns
+% In this template, the separation width chosen is 0.024 of the paper width and a 4-column layout
+% onecolwid should therefore be (1-(# of columns+1)*sepwid)/# of columns e.g. (1-(4+1)*0.024)/4 = 0.22
+% Set twocolwid to be (2*onecolwid)+sepwid = 0.464
+% Set threecolwid to be (3*onecolwid)+2*sepwid = 0.708
+
+\newlength{\sepwid}
+\newlength{\firstcolwid}
+\newlength{\twocolwid}
+\newlength{\threecolwid}
+\newlength{\logoheight}
+\newlength{\titlewid}
+\setlength{\paperwidth}{33.1in} % A0 width: 46.8in
+\setlength{\paperheight}{46.8in} % A0 height: 33.1in
+\setlength{\titlewid}{0.95\paperwidth}
+\setlength{\sepwid}{0.015\paperwidth} % Separation width (white space) between columns
+\setlength{\firstcolwid}{0.29\paperwidth} %width of first column
+\setlength{\twocolwid}{0.29\paperwidth} % Width of second column
+\setlength{\threecolwid}{0.29\paperwidth} % Width of thired columns
+\setlength{\logoheight}{0.025\paperheight}
+\newcommand{\singlefigurewidth}{0.6\linewidth}
+\newcommand{\doublefigurewidth}{0.35\linewidth}
+ \newcommand{\vertspace}{\vspace{0.01\paperheight}}
+  \newcommand{\titlevertspace}{\vspace{0.008\paperheight}}
+ \newcommand{\logospace}{\hspace{0.01\linewidth}}
+
+\addtobeamertemplate{block end}{}{\vertspace} % White space under blocks
+\addtobeamertemplate{block alerted end}{}{\vertspace} % White space under highlighted (alert) blocks
+\setlength{\belowcaptionskip}{0ex} % White space under figures
+\setlength{\belowdisplayshortskip}{0ex} % White space under equations
+
+
+%-------------------------------------------------------------------------------------------------
+%         COMMON PHRASES
+%-------------------------------------------------------------------------------------------------
+% Header Information
+\setbeamertemplate{caption}[numbered]{}
+
+\graphicspath{{../FiguresNew/}} % Location of the graphics files
+\title{The method of geometric optics, applied to wifi propagation.} % Poster title 
+\author{Hayley Wragg \href{mailto:h.wragg@bath.ac.uk}{H.Wragg@bath.ac.uk} } % Author(s)
+\def \photo{\includegraphics[width=\linewidth]{AcademicPhotos/PostersPhotos/HWragg5}}
+\def \supervisor{\mbox{Prof. C. J. Budd}, \mbox{Dr. R. Watson}}
+\def \cosupervisor{\mbox{Dr. K. Briggs}, \mbox{Dr. M. Fitch}}
+\institute{University of Bath, BT} % Institution
+ \def \logo{  
+ \includegraphics[height=\logoheight]{Logos/bathuni.png} \logospace 
+ \includegraphics[height=\logoheight]{Logos/BT.jpg} \logospace
+ \includegraphics[height=\logoheight]{Logos/smithlogo-full.png} \logospace 
+ \includegraphics[height=\logoheight]{Logos/samba.png} \logospace  }
+% General test usage
+ \newcommand{\PDE}{Partial differential equation }
+ \newcommand{\pde}{partial differential equation }
+ 
+ % Letters
+ \newcommand{\bx}{\textbf{x}}
+ \newcommand{\bbR}{\mathbb{R}}
+ \newcommand{\bB}{\textbf{B}}
+ \newcommand{\bE}{\textbf{E}}
+ \newcommand{\bJ}{\textbf{J}}
+ \newcommand{\bD}{\textbf{D}}
+ \newcommand{\bH}{\textbf{H}}
+ \newcommand{\bS}{\textbf{S}}
+ \newcommand{\bw}{\textbf{w}}
+ \newcommand{\bW}{\textbf{W}}
+ \newcommand{\bn}{\textbf{n}}
+ \newcommand{\bA}{\textbf{A}}
+% % Derivatives and Partial derivative
+ \newcommand{\pddt}{\frac{\partial}{\partial t}}
+ \newcommand{\pddtE}{\frac{\partial \bE}{\partial t}}
+ \newcommand{\pddtH}{\frac{\partial \bH}{\partial t}}
+ \newcommand{\pddtD}{\frac{\partial \bD}{\partial t}}
+ \newcommand{\pddtB}{\frac{\partial \bB}{\partial t}}
+ \newcommand{\pddtBnob}{\frac{\partial B}{\partial t}} 
+ \newcommand{\pddtHnob}{\frac{\partial H}{\partial t}} 
+ \newcommand{\pddtwnob}{\frac{\partial w}{\partial t}}
+ \newcommand{\pddtWnob}{\frac{\partial W}{\partial t}}
+ \newcommand{\pddtw}{\frac{\partial \bw}{\partial t}}
+ \newcommand{\pddtW}{\frac{\partial \bW}{\partial t}}
+ \newcommand{\pddtJ}{\frac{\partial \bJ}{\partial t}}
+ 
+% \newcommand{\ddt}{\frac{d}{d t}}
+  \newcommand{\pddddt}{\frac{\partial^2}{\partial t^2}}
+ \newcommand{\ddddt}{\frac{d^2}{d t^2}}
+ \newcommand{\pddddtE}{\frac{\partial^2 \bE}{d t^2}}
+ \newcommand{\pddddtBnob}{\frac{\partial^2 B}{d t^2}}
+ \newcommand{\pddddtHnob}{\frac{\partial^2 H}{d t^2}}
+ \newcommand{\curl}{\nabla \times}
+ \newcommand{\grad}{\nabla}
+ \newcommand{\Div}{\nabla \cdot}
+  \newcommand{\curlper}{\nabla_{\perp}\times}
+ \newcommand{\gradper}{\nabla_{\perp}}
+ \newcommand{\Divper}{\nabla_{\perp} \cdot}
+
+
+%-------------------------------------------------------------------------------------------------
+%         THEOREMS
+%-------------------------------------------------------------------------------------------------
+
+ \theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Corollary}
+
+\theoremstyle{definition}
+
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example}[section]
+
+\newtheorem{defn}{Definition}[subsection]
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+
+
+%-------------------------------------------------------------------------------------------------
+%         IMAGES
+%-------------------------------------------------------------------------------------------------
+\newcommand{\raysroom}{
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=\doublefigurewidth]{Rays1} 
+\includegraphics[width=\doublefigurewidth]{Rays11}
+\caption{The rays propagating from the transmitter and reflecting from two different sources.\label{fig::rayroom}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\Heatmap}{\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=\doublefigurewidth]{Heatmap1}
+\includegraphics[width=\doublefigurewidth]{Heatmap11} 
+\caption{The signal power over the environment \label{fig::signalcoverage}}
+\end{centering}
+\end{figure}}
+\newcommand{\HeatmapBounded}{\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=\doublefigurewidth]{HeatmapBounded6}
+\includegraphics[width=\doublefigurewidth]{HeatmapBounded17} 
+\caption{The signal power over the environment \label{fig::signalcoveragebounded}}
+\end{centering}
+\end{figure}}
+
+\newcommand{\uniformpropagation}{
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=\singlefigurewidth]{UniformPropagation}
+\caption{Antenna uniformly propagating\label{fig::Unifprop}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\histplots}{
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=\doublefigurewidth]{HistogramNoBounds3}
+\includegraphics[width=\doublefigurewidth]{HistogramNoBounds13}
+\caption{Histogram of the unbounded signal power values \label{fig::histnobounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\histplotsbounded}{
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=\doublefigurewidth]{HistogramBounds8}
+\includegraphics[width=\doublefigurewidth]{HistogramBounds19}
+\caption{Histogram of the bounded signal power values\label{fig::histbounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\cumplots}{
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=\doublefigurewidth]{Cumsum3}
+\includegraphics[width=\doublefigurewidth]{Cumsum13}
+\caption{Cumulative distribution, signal power values unbounded \label{fig::cumsumnobounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\cumplotsbounded}{
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=\doublefigurewidth]{CumsumBounded8}
+\includegraphics[width=\doublefigurewidth]{CumsumBounded19}
+\caption{Cumulative distribution, signal power values bounded \label{fig::cumsumbounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\linepic}{
+    \begin{tikzpicture}
+    \draw (0.2,1){ } -- (7.2,1);
+    \draw (0.2,-1){ } -- (7.2,-1); 
+    \draw [line width= 0.5cm, \raycolour]{ } (0,0) -- (7.2,0);
+    \draw[ultra thick, \wavecolour] (0,0) sin (1,1) cos (2,0) sin (3,-1) cos (4,0) sin (5,1) cos (6,0) sin(7,-1);    %% the real business in this line
+    \end{tikzpicture}
+}
+\newcommand{\OnBothHeatmap}{\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{RandomPhase/OnBothHeatmap1}
+\caption{First source location \label{fig::OnBothsignalcoverageA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{RandomPhase/OnBothHeatmap35} 
+\caption{Second source location \label{fig::OnBothsignalcoverageB}}
+\end{subfigure}
+\caption{The field strength over the environment unbounded\label{fig::OnBothsignalcoverage}}
+\end{centering}
+\end{figure}}
+\newcommand{\OnBothhistplots}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{RandomPhase/OnBothHistogramNoBounds1}
+\caption{First source location\label{fig::onbothhistnoboundsA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{RandomPhase/OnBothHistogramNoBounds35}
+\caption{Second source location \label{fig::onbothhistnoboundsB}}
+\end{subfigure}
+\caption{Histogram of the unbounded field strength values\label{fig::OnBothhistnobounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\OnBothcumplots}{
+\begin{figure}[H]
+\begin{centering}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{RandomPhase/OnBothRNDCumsum1}
+\caption{First source location \label{fig::onbothcumsumnoboundsA}}
+\end{subfigure}
+\begin{subfigure}[b]{\doublefigurewidth}
+\includegraphics[width=\linewidth]{RandomPhase/OnBothRNDCumsum35}
+\caption{Second source location \label{fig::onbothcumsumnoboundsB}}
+\end{subfigure}
+\caption{ Cumulative distribution, field strength values unbounded  \label{fig::OnBothcumsumnobounds}}
+\end{centering}
+\end{figure}
+}
+\newcommand{\smallwavelength}{
+    \begin{tikzpicture}
+    \draw (-0.2,1){ } -- (6,1);
+    \draw (-0.2,-1){ } -- (6,-1); 
+    \draw [line width= 0.5cm, \raycolour]{ } (0,0) -- (6,0);
+    \draw[ultra thick, \wavecolour] (0,0) sin (0.25,1) cos (0.5,0) sin (0.75,-1) cos (1,0) sin (1.25,1) cos (1.5,0) sin(1.75,-1) cos(2,0) sin (2.25,1) cos (2.5,0) sin (2.75,-1) cos (3,0) sin (3.25,1) cos (3.5,0) sin(3.75,-1) cos(4,0) sin (4.25,1) cos (4.5,0) sin (4.75,-1) cos (5,0) sin (5.25,1) cos (5.5,0) sin(5.75,-1) cos(6,0);    %% the real business in this line
+    \end{tikzpicture}
+}
+\newcommand{\bigwavelength}{
+    \begin{tikzpicture}
+    \draw (0,0) -- (6,0);
+    \draw (0,1){ } -- (6,1);
+    \draw (0,-1){ } -- (6,-1); 
+    \draw [line width= 0.5cm, \raycolour]{ } (0,0) -- (6,0);
+    \draw[ultra thick, \wavecolour] (0,0) sin (1,1) cos (2,0) sin (3,-1) cos (4,0) sin (5,1) cos (6,0);    %% the real business in this line
+    \end{tikzpicture}
+}

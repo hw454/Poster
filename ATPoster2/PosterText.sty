@@ -1,0 +1,195 @@
+%-------------------------------------------------------------------------------------------------
+%         TEXT
+%-------------------------------------------------------------------------------------------------
+%-------------- Introduction
+\newcommand{\intro}{
+\alertblockcolours
+\begin{alertblock}{Overview of the method of geometric optics}
+\begin{itemize}
+\item The idea is to use \textbf{rays} to model waves. 
+\\
+\begin{figure}[H]
+\begin{centering}
+\resizebox{\singlefigurewidth}{!}{
+\linepic}
+\caption{Straight line (ray) approximation of a wave. \label{fig::wave_line}}
+\end{centering}
+\end{figure}
+\item This approximation is good for small wavelengths.
+\begin{centering}
+\begin{figure}[H]
+\resizebox{\singlefigurewidth}{!}{
+\smallwavelength
+\bigwavelength
+}
+\caption{Ray approximation for different wavelengths.}
+\end{figure}
+\end{centering}
+\item Map the paths of \textbf{the rays} in the environment to model the path of the waves.
+\begin{figure}
+\begin{centering}
+\includegraphics[width=\singlefigurewidth]{Rayfield.png}
+\caption{Rays propagating within an environment. \label{fig::rayfield} }
+\end{centering}
+\end{figure}
+\item Calculations are then made \textbf{along the rays} to determine information such as power.
+\end{itemize}
+\end{alertblock}
+
+}
+
+
+%-------------- First Block
+\newcommand{\firstblock}{
+\begin{alertblock}{Why use the method?}
+\blockcolours
+\begin{itemize}
+\item When the wavelength is small this method is much faster than numerical \pde methods which require a very small mesh size.
+\end{itemize}
+\end{alertblock}
+}
+
+
+
+
+%-------------- Third Block
+\newcommand{\MathematicalMotivation}{
+\begin{block}{Mathematical motivation}
+\setbeamercolor{item}{fg=\blockitem}
+\captionsetup[figure]{labelfont={color=\blockcaption}}
+\begin{itemize}
+\item A time-independent model for wave propagation is the 
+\textbf{Helmholtz equation}:
+\begin{equation}
+\nabla^2 \phi(x)+{\underbrace{k}_{\substack{\text{Wave} \\ \text{number}}}}^2 \phi(x)=0.
+\end{equation}
+\item Where $k$ is the wave number given by $$k=\frac{2\pi}{\lambda}=\frac{2 \pi f}{c}, $$ $f$ is the frequency of the wave, and $c$ the velocity.
+\item Assuming that $\phi(x)$ can be written as a function of the path $S(x)$ in the form $\phi=u(x)e^{i k S(x)}$ then $u$ satisfies,
+\begin{equation}
+\frac{1}{k^2}\nabla^2 u - u \left( |\nabla S|^2-1 \right)=0
+\end{equation} 
+Since $k \gg 1$, $S(x)$ satisfies the \textbf{Eikonal Equation}:
+\begin{equation}
+{|\nabla S|}^2=1 \Rightarrow |\nabla S|=1
+\end{equation}
+The constant gradient means that a ray is a valid approximation for the wave propagation when $k\gg 1$.
+\end{itemize}
+\end{block}
+}
+
+%-------------- Second Block
+\newcommand{\application}{
+\begin{alertblock}{Applications}
+\alertblockcolours
+\begin{itemize}
+\item \textbf{Small wavelength propagation} can be used to model radio propagation in cities, and wifi propagation in the home. 
+\item Developments in technologies have resulted in an increased demand for \textbf{high frequency wifi propagation models}. 
+\begin{figure}[H]
+\begin{centering}
+\includegraphics[width=\singlefigurewidth]{Room} 
+\caption{Template domestic environment projected into two dimensions \label{fig::temproom}}
+\end{centering}
+\end{figure}
+\item Figure \eqref{fig::temproom} gives an example simulated environment.
+\item To get an idea of the coverage around the environment the method of geometric optics can be used.
+\end{itemize}
+\end{alertblock}
+}
+
+
+
+%-------------- Fourth Block
+\newcommand{\resultsblock}{
+\begin{alertblock}{Trajectory approximations}
+\alertblockcolours
+\begin{itemize}
+\item
+The method of geometric optics can be applied to the problem of \textbf{wifi propagation}. For simplicity it is assumed that the antenna propagates uniformly and the domain is modelled in \textbf{two dimensions}.
+\uniformpropagation
+ \item Using Hewett's argument in \cite{hewett2010sound} since the Rayleigh distance is much larger than the spatial distance it is valid to \textbf{ignore diffraction effects}. 
+ \item Objects are all also given the same reflection coefficient and refraction is ignored---this is valid since the loss is very high.
+ \item Phase change has also been ignored in this model.
+\raysroom
+\item In Figure \eqref{fig::rayroom} the method of geometric optics has been applied to Figure \eqref{fig::temproom} to visualise the coverage. This has been applied to two different source locations.
+\end{itemize}
+\end{alertblock}
+}
+
+%-------------- Fifth Block
+\newcommand{\resultssecondblock}{
+\begin{block}{Wifi coverage - Ignoring phase}
+\blockcolours
+\begin{itemize}
+\item It is also important to get an idea of the power of the \textbf{wifi coverage}. 
+\item This is calculated along the rays taking into account the \textbf{attenuation in free space} and the \textbf{reduction at the reflections}. 
+\item The loss resulting from the distance travelled is calculated using the \textbf{Friis transmission formula}:
+\begin{equation}
+\label{eqn::FriisTransmissFormula}
+\frac{u_r}{u_t}=G_a G_b \left( \frac{\lambda}{4 \pi r} \right)^2, \hspace{0.1\linewidth}\cite{aragon2008antennas}
+\end{equation} 
+where $u_r$, $u_t$ give the power at the receiver and transmitter relatively. The gain for the antenna's $G_a$ and $G_b$ are taken to be $1$. 
+\item Figure \ref{fig::signalcoverage} shows the signal power for two \textbf{different transmitter locations}.
+\Heatmap
+%\item A problem with this visualisation is that \textbf{very extreme low values makes the fairly low values look better}. Practically any value below $30$ dBm is unusable. Similarly for the \textbf{extreme high values}. 
+%\item To account for this the values are \textbf{bounded} within their useful range of $[30,120]$ dBm. The resulting coverage is then found.
+%\HeatmapBounded
+\end{itemize}
+\end{block}
+}
+\newcommand{\resultsthirdblock}{
+\begin{alertblock}{Wifi coverage - With random phase}
+\blockcolours
+\begin{itemize}
+\item 
+
+\Heatmap
+%\item A problem with this visualisation is that \textbf{very extreme low values makes the fairly low values look better}. Practically any value below $30$ dBm is unusable. Similarly for the \textbf{extreme high values}. 
+%\item To account for this the values are \textbf{bounded} within their useful range of $[30,120]$ dBm. The resulting coverage is then found.
+%\HeatmapBounded
+\end{itemize}
+\end{alertblock}
+}
+
+%-------------- Fifth Block
+\newcommand{\histograms}{
+\begin{alertblock}{Distribution of the signal power}
+\alertblockcolours
+Histograms for the bounded and unbounded signal power values to visualise the quality of the coverage.
+\histplots
+\histplotsbounded
+Figures show a significant change for the different source locations.
+\end{alertblock}
+}
+
+
+%-------------- Fifth Block
+\newcommand{\cumulativehistograms}{
+\begin{block}{Cumulative distribution of the signal power}
+\alertblockcolours
+To view the fraction of area with at least some given signal strength the cumulative distributions can be used.
+\cumplots
+Repeating for the bounded values:
+\cumplotsbounded
+Figures show a noticeable difference in the coverage made by moving the transmitter.  
+\end{block}
+}
+
+
+%-------------- conclusion
+\newcommand{\futurework}{
+\begin{block}{Future work}
+\blockcolours
+\begin{itemize}
+\item Statistically analyse the histograms and cumulative distribtuions for different locations of transmitters in different environments. 
+\item Account for phase change using random phases.
+\item Take into account different reflection coefficients. 
+\end{itemize}
+\end{block}
+}
+
+
+\newcommand{\biblio}{\begin{alertblock}{References}
+\bibcolours
+ \bibliography{ATposter.bib}
+ % Change the ATposter.bib file to change the references. The corresponding \cite{} calls will also need to be changed.
+\end{alertblock}}
